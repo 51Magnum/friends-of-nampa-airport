@@ -40,8 +40,16 @@ export const siteConfig = {
     /** TODO: set when a time is booked. */
     time: "[TIME]",
   },
-  /** TODO: paste the MailerLite embed only after the group list is created. */
-  mailerLiteSignupEmbed: "[MAILERLITE SIGNUP FORM EMBED]",
+  /**
+   * Live MailerLite embedded form. The universal script plus the form slug
+   * render the signup form; do not treat this as a placeholder.
+   */
+  mailerLiteSignup: {
+    accountId: "2793534",
+    formId: "204042873156404617",
+    formSlug: "7X2Z1t",
+    scriptSrc: "https://assets.mailerlite.com/js/universal.js",
+  },
   mission:
     "Friends of Nampa Airport is an independent volunteer group of pilots, hangar tenants, airport users, and community members that keeps people informed about Nampa Municipal Airport (KMAN), holds regular public meetings, and helps identify and support what the airport needs — in cooperation with airport management, the Airport Commission, and AOPA’s Airport Support Network, but not as a city or AOPA body.",
   welcome:

@@ -23,13 +23,22 @@ describe("siteConfig placeholders", () => {
     expect(siteConfig.contactEmail).toBe(`info@${SITE_DOMAIN}`);
   });
 
-  it("keeps first meeting and signup embed as unresolved placeholders", () => {
+  it("keeps first meeting details as unresolved placeholders", () => {
     expect(isUnresolvedPlaceholder(siteConfig.firstMeeting.date)).toBe(true);
     expect(isUnresolvedPlaceholder(siteConfig.firstMeeting.venue)).toBe(true);
     expect(isUnresolvedPlaceholder(siteConfig.firstMeeting.time)).toBe(true);
-    expect(isUnresolvedPlaceholder(siteConfig.mailerLiteSignupEmbed)).toBe(
-      true,
+  });
+
+  it("uses the live MailerLite embedded signup form", () => {
+    expect(siteConfig.mailerLiteSignup.accountId).toBe("2793534");
+    expect(siteConfig.mailerLiteSignup.formId).toBe("204042873156404617");
+    expect(siteConfig.mailerLiteSignup.formSlug).toBe("7X2Z1t");
+    expect(siteConfig.mailerLiteSignup.scriptSrc).toBe(
+      "https://assets.mailerlite.com/js/universal.js",
     );
+    expect(
+      isUnresolvedPlaceholder(siteConfig.mailerLiteSignup.formSlug),
+    ).toBe(false);
   });
 
   it("uses a group contact address pattern, not a personal name", () => {

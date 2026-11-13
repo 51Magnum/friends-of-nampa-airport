@@ -7,6 +7,7 @@ import {
   siteConfig,
   volunteerRoles,
 } from "@/lib/site-config";
+import { MailerLiteSignupForm } from "@/lib/mailerlite-signup-form";
 import { Placeholder } from "@/lib/placeholder";
 
 function SourceLinks({
@@ -181,12 +182,7 @@ export default function Home() {
             Get meeting notices and occasional airport updates. We will keep
             messages infrequent and useful.
           </p>
-          <div className="rounded-md border border-dashed border-amber-500 bg-amber-50 px-4 py-6 text-sm dark:border-amber-400 dark:bg-amber-950">
-            <p className="mb-2 font-medium text-amber-950 dark:text-amber-100">
-              Signup form placeholder
-            </p>
-            <Placeholder value={siteConfig.mailerLiteSignupEmbed} />
-          </div>
+          <MailerLiteSignupForm />
         </section>
 
         <section id="contact" className="flex flex-col gap-6 scroll-mt-24">

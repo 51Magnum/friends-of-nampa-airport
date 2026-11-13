@@ -13,7 +13,7 @@ This is the public website for Friends of Nampa Airport, an independent voluntee
 - Do not add personal contact information for Shane or any other individual. The only public contact is the group address in `lib/site-config.ts`.
 - Draft all outgoing communications (emails, posts, newsletter copy) for review. Do not send, publish, or contact anyone unless the owner has explicitly approved that specific message.
 - Airport information on the site must use official source links only (`officialLinks` in `lib/site-config.ts` and sourced announcement citations). Do not invent facts, rates, dates, or meeting details.
-- The site domain is `friendsofnampaairport.org` (`SITE_DOMAIN` / `SITE_ORIGIN` in `lib/site-config.ts`). Keep unresolved values as visible placeholders: contact email, first meeting date/venue/time, and the MailerLite signup embed. Do not hide or invent replacements.
+- The site domain is `friendsofnampaairport.org` (`SITE_DOMAIN` / `SITE_ORIGIN` in `lib/site-config.ts`). The contact email and MailerLite signup embed are live. Keep unresolved first-meeting date/venue/time values as visible placeholders. Do not hide or invent replacements.
 - No database, paid services, environment variables, or analytics.
 
 ## Deployment
