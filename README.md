@@ -48,4 +48,4 @@ The site domain and origin live in `lib/site-config.ts` (`SITE_DOMAIN` / `SITE_O
 
 ## Placeholders
 
-The group domain is `friendsofnampaairport.org`. Until the remaining details are confirmed, `lib/site-config.ts` holds TODO values such as `[info@friendsofnampaairport.org]`, `[FIRST MEETING DATE]`, `[VENUE]`, `[TIME]`, and `[MAILERLITE SIGNUP FORM EMBED]`. The site renders these as clearly marked placeholders.
+The group domain is `friendsofnampaairport.org`. Until the remaining details are confirmed, `lib/site-config.ts` holds TODO values such as `[FIRST MEETING DATE]`, `[VENUE]`, `[TIME]`, and `[MAILERLITE SIGNUP FORM EMBED]`. The site renders these as clearly marked placeholders.

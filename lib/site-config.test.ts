@@ -18,9 +18,12 @@ describe("siteConfig domain", () => {
 });
 
 describe("siteConfig placeholders", () => {
-  it("keeps email, first meeting, and signup embed as unresolved placeholders", () => {
-    expect(isUnresolvedPlaceholder(siteConfig.contactEmail)).toBe(true);
-    expect(siteConfig.contactEmail).toBe(`[info@${SITE_DOMAIN}]`);
+  it("uses the live group contact email", () => {
+    expect(isUnresolvedPlaceholder(siteConfig.contactEmail)).toBe(false);
+    expect(siteConfig.contactEmail).toBe(`info@${SITE_DOMAIN}`);
+  });
+
+  it("keeps first meeting and signup embed as unresolved placeholders", () => {
     expect(isUnresolvedPlaceholder(siteConfig.firstMeeting.date)).toBe(true);
     expect(isUnresolvedPlaceholder(siteConfig.firstMeeting.venue)).toBe(true);
     expect(isUnresolvedPlaceholder(siteConfig.firstMeeting.time)).toBe(true);

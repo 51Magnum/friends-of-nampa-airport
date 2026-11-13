@@ -31,7 +31,7 @@ export const siteConfig = {
   domain: SITE_DOMAIN,
   siteOrigin: SITE_ORIGIN,
   /** TODO: confirm the exact group mailbox before publishing. */
-  contactEmail: `[info@${SITE_DOMAIN}]`,
+  contactEmail: `info@${SITE_DOMAIN}`,
   firstMeeting: {
     /** TODO: set when a date is booked. */
     date: "[FIRST MEETING DATE]",

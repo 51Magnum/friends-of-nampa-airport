@@ -194,7 +194,13 @@ export default function Home() {
             Contact
           </h2>
           <p className="leading-7 text-zinc-600 dark:text-zinc-400">
-            Email: <Placeholder value={siteConfig.contactEmail} />
+            Email:{" "}
+            <a
+              href={`mailto:${siteConfig.contactEmail}`}
+              className="underline decoration-zinc-300 underline-offset-4 hover:text-black dark:decoration-zinc-600 dark:hover:text-zinc-50"
+            >
+              {siteConfig.contactEmail}
+            </a>
           </p>
           <p className="leading-7 text-zinc-600 dark:text-zinc-400">
             Please use this group address only. It is not a city office and
