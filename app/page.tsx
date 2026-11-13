@@ -183,6 +183,11 @@ export default function Home() {
             messages infrequent and useful.
           </p>
           <MailerLiteSignupForm />
+          <p className="text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+            After you sign up, we&apos;ll email you a link to confirm. If you
+            don&apos;t see it in a few minutes, check your spam or junk folder
+            and mark it &ldquo;not spam.&rdquo;
+          </p>
         </section>
 
         <section id="contact" className="flex flex-col gap-6 scroll-mt-24">
