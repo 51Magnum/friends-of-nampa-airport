@@ -62,7 +62,7 @@ export default function Home() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[center_42%] sm:object-center"
+            className="object-cover object-[center_42%] sm:object-[35%_center]"
           />
           <div
             className="absolute inset-0 bg-gradient-to-t from-navy to-transparent sm:hidden"
@@ -77,7 +77,7 @@ export default function Home() {
             aria-hidden="true"
           />
         </div>
-        <div className="relative mx-auto flex w-full max-w-5xl flex-col px-6 pb-12 pt-6 sm:min-h-[34rem] sm:justify-end sm:py-12 lg:min-h-[38rem]">
+        <div className="relative mx-auto flex w-full max-w-5xl flex-col px-6 pb-12 pt-6 sm:min-h-[34rem] sm:items-end sm:justify-center sm:py-12 lg:min-h-[38rem]">
           <div className="flex flex-col gap-5 sm:max-w-md sm:rounded-2xl sm:bg-navy/90 sm:p-8 sm:shadow-xl sm:backdrop-blur-md">
           <p className="font-mono text-sm uppercase tracking-[0.22em] text-amber-bright">
             {siteConfig.name}
