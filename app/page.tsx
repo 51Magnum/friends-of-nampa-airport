@@ -288,7 +288,14 @@ export default function Home() {
           <p className="text-sm leading-6 text-muted">
             After you sign up, we&apos;ll email you a link to confirm. If you
             don&apos;t see it in a few minutes, check your spam or junk folder
-            and mark it &ldquo;not spam.&rdquo;
+            and mark it &ldquo;not spam.&rdquo; Still nothing? Email{" "}
+            <a
+              href={`mailto:${siteConfig.contactEmail}`}
+              className="font-medium text-sky underline decoration-sky-soft underline-offset-4 hover:text-navy"
+            >
+              {siteConfig.contactEmail}
+            </a>{" "}
+            and we&apos;ll add you by hand.
           </p>
         </section>
 
