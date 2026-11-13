@@ -17,15 +17,21 @@ export type AnnouncementItem = {
 /**
  * Unresolved public details stay as bracketed TODO placeholders until they
  * are confirmed. Do not invent replacements in the UI.
+ *
+ * Change SITE_DOMAIN if the hostname changes; siteOrigin, metadata, and
+ * the suggested contact placeholder are derived from it.
  */
+export const SITE_DOMAIN = "friendsofnampaairport.org";
+export const SITE_ORIGIN = `https://www.${SITE_DOMAIN}`;
+
 export const siteConfig = {
   name: "Friends of Nampa Airport",
   shortDescription:
     "An independent volunteer group for Nampa Municipal Airport (KMAN).",
-  /** TODO: replace after the group domain is registered. */
-  domain: "[DOMAIN]",
-  /** TODO: replace after the group mailbox exists. */
-  contactEmail: "[info@DOMAIN]",
+  domain: SITE_DOMAIN,
+  siteOrigin: SITE_ORIGIN,
+  /** TODO: confirm the exact group mailbox before publishing. */
+  contactEmail: `[info@${SITE_DOMAIN}]`,
   firstMeeting: {
     /** TODO: set when a date is booked. */
     date: "[FIRST MEETING DATE]",

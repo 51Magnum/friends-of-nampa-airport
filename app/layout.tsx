@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import { siteConfig } from "@/lib/site-config";
-import { Placeholder } from "@/lib/placeholder";
+import { MaybePlaceholder } from "@/lib/placeholder";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,6 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.siteOrigin),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: siteConfig.name,
     template: `%s · ${siteConfig.name}`,
@@ -69,8 +73,8 @@ export default function RootLayout({
           <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-6 py-8 text-sm text-zinc-500 dark:text-zinc-400">
             <p>{siteConfig.footerDisclaimer}</p>
             <p>
-              &copy; {new Date().getFullYear()} {siteConfig.name}. Domain:{" "}
-              <Placeholder value={siteConfig.domain} />
+              &copy; {new Date().getFullYear()} {siteConfig.name}.{" "}
+              <MaybePlaceholder value={siteConfig.domain} />
             </p>
           </div>
         </footer>

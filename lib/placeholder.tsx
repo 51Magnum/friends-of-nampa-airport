@@ -1,3 +1,5 @@
+import { isUnresolvedPlaceholder } from "./site-config";
+
 export function Placeholder({ value }: { value: string }) {
   return (
     <span
@@ -7,4 +9,12 @@ export function Placeholder({ value }: { value: string }) {
       {value}
     </span>
   );
+}
+
+/** Renders a dashed placeholder only when the value is still a TODO. */
+export function MaybePlaceholder({ value }: { value: string }) {
+  if (isUnresolvedPlaceholder(value)) {
+    return <Placeholder value={value} />;
+  }
+  return value;
 }
