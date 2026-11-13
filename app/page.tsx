@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import {
   gettingStarted,
+  isUnresolvedPlaceholder,
   kmanUpdateIntro,
   kmanUpdates,
   meetingAgenda,
@@ -12,7 +13,6 @@ import Image from "next/image";
 import { MailerLiteSignupForm } from "@/lib/mailerlite-signup-form";
 import { PhotoFigure } from "@/lib/photo-figure";
 import { heroPhoto, kmanPhoto, landingPhoto, runwayPhoto } from "@/lib/photos";
-import { Placeholder } from "@/lib/placeholder";
 
 function SourceLinks({
   sources,
@@ -195,9 +195,27 @@ export default function Home() {
           <div className="rounded-2xl border border-amber-bright/40 bg-amber-soft p-6 shadow-sm sm:p-8">
             <p className="leading-7 text-ink">
               <strong className="font-semibold text-navy">First meeting:</strong>{" "}
-              <Placeholder value={siteConfig.firstMeeting.date} />,{" "}
-              <Placeholder value={siteConfig.firstMeeting.venue} />,{" "}
-              <Placeholder value={siteConfig.firstMeeting.time} />
+              {[
+                siteConfig.firstMeeting.date,
+                siteConfig.firstMeeting.venue,
+                siteConfig.firstMeeting.time,
+              ].some(isUnresolvedPlaceholder) ? (
+                <>
+                  Date, time, and place to be announced.{" "}
+                  <a
+                    href="#signup"
+                    className="font-medium text-sky underline underline-offset-2 hover:text-navy"
+                  >
+                    Sign up for updates
+                  </a>{" "}
+                  and we&apos;ll email you as soon as it&apos;s set.
+                </>
+              ) : (
+                <>
+                  {siteConfig.firstMeeting.date}, {siteConfig.firstMeeting.venue},{" "}
+                  {siteConfig.firstMeeting.time}
+                </>
+              )}
             </p>
           </div>
           <div className="rounded-2xl border border-line bg-paper p-6 shadow-sm sm:p-8">
