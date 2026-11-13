@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import { BrandMark } from "@/lib/brand-mark";
 import { siteConfig } from "@/lib/site-config";
+import { PhotoCredits } from "@/lib/photo-figure";
 import { MaybePlaceholder } from "@/lib/placeholder";
 import "./globals.css";
 
@@ -100,6 +101,9 @@ export default function RootLayout({
               &copy; {new Date().getFullYear()} {siteConfig.name}.{" "}
               <MaybePlaceholder value={siteConfig.domain} />
             </p>
+            <div className="text-sky-soft/90">
+              <PhotoCredits />
+            </div>
           </div>
         </footer>
       </body>

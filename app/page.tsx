@@ -8,8 +8,10 @@ import {
   siteConfig,
   volunteerRoles,
 } from "@/lib/site-config";
-import { HeroPlane, HeroRunway, HeroSky } from "@/lib/brand-mark";
+import Image from "next/image";
 import { MailerLiteSignupForm } from "@/lib/mailerlite-signup-form";
+import { PhotoFigure } from "@/lib/photo-figure";
+import { heroPhoto, kmanPhoto, landingPhoto, runwayPhoto } from "@/lib/photos";
 import { Placeholder } from "@/lib/placeholder";
 
 function SourceLinks({
@@ -52,41 +54,82 @@ function SectionHeading({ children }: { children: ReactNode }) {
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col bg-sky-pale font-sans">
-      <section id="home" className="relative">
-        <div className="relative overflow-hidden">
-          <HeroSky />
-          <HeroPlane />
-          <div className="relative mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-16 sm:py-20 lg:py-24">
-          <p className="font-mono text-sm uppercase tracking-[0.22em] text-sky">
+      <section id="home" className="relative isolate overflow-hidden bg-navy">
+        <div className="relative h-64 sm:absolute sm:inset-0 sm:h-auto">
+          <Image
+            src={heroPhoto.src}
+            alt={heroPhoto.alt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_42%] sm:object-center"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-navy to-transparent sm:hidden"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-0 hidden sm:block bg-navy/10"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-0 hidden sm:block bg-gradient-to-t from-navy/40 via-transparent to-navy/10"
+            aria-hidden="true"
+          />
+        </div>
+        <div className="relative mx-auto flex w-full max-w-5xl flex-col px-6 pb-12 pt-6 sm:min-h-[34rem] sm:justify-end sm:py-12 lg:min-h-[38rem]">
+          <div className="flex flex-col gap-5 sm:max-w-md sm:rounded-2xl sm:bg-navy/90 sm:p-8 sm:shadow-xl sm:backdrop-blur-md">
+          <p className="font-mono text-sm uppercase tracking-[0.22em] text-amber-bright">
             {siteConfig.name}
           </p>
-          <h1 className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-navy sm:text-5xl">
+          <h1 className="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
             A community group for Nampa Municipal Airport.
           </h1>
+          <div className="flex flex-wrap gap-3 pt-1">
+            <a
+              href="#signup"
+              className="inline-flex items-center rounded-full bg-amber-bright px-5 py-2.5 text-sm font-medium text-navy shadow-sm hover:bg-amber-soft"
+            >
+              Sign up for updates
+            </a>
+            <a
+              href="#meetings"
+              className="inline-flex items-center rounded-full border border-white/70 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm hover:bg-white hover:text-navy"
+            >
+              Upcoming meeting
+            </a>
+          </div>
+          <p className="max-w-xl text-xs leading-5 text-white/85">
+            Photo: {heroPhoto.author},{" "}
+            <a
+              href={heroPhoto.licenseUrl}
+              className="underline decoration-white/50 underline-offset-2 hover:decoration-amber-bright"
+            >
+              {heroPhoto.license}
+            </a>
+            ,{" "}
+            <a
+              href={heroPhoto.filePage}
+              className="underline decoration-white/50 underline-offset-2 hover:decoration-amber-bright"
+            >
+              Wikimedia Commons
+            </a>
+            . {heroPhoto.caption}
+          </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="bg-sky-pale">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-12 sm:py-16">
           <p className="max-w-3xl text-lg leading-8 text-muted">
             {siteConfig.mission}
           </p>
           <p className="max-w-3xl text-lg leading-8 text-muted">
             {siteConfig.welcome}
           </p>
-          <div className="flex flex-wrap gap-3 pt-2">
-            <a
-              href="#signup"
-              className="inline-flex items-center rounded-full bg-navy px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-navy-deep"
-            >
-              Sign up for updates
-            </a>
-            <a
-              href="#meetings"
-              className="inline-flex items-center rounded-full border border-navy/20 bg-paper/80 px-5 py-2.5 text-sm font-medium text-navy backdrop-blur-sm hover:border-navy hover:bg-paper"
-            >
-              Upcoming meeting
-            </a>
-          </div>
-          </div>
         </div>
-        <HeroRunway />
-      </section>
+      </div>
 
       <main
         id="main"
@@ -123,6 +166,24 @@ export default function Home() {
               ))}
             </ul>
           </article>
+        </section>
+
+        <section aria-label="Photographs" className="flex flex-col gap-8">
+          <PhotoFigure
+            photo={kmanPhoto}
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            aspectClassName="aspect-[16/9] sm:aspect-[2/1]"
+          />
+          <div className="grid gap-8 sm:grid-cols-2">
+            <PhotoFigure
+              photo={landingPhoto}
+              sizes="(max-width: 640px) 100vw, 512px"
+            />
+            <PhotoFigure
+              photo={runwayPhoto}
+              sizes="(max-width: 640px) 100vw, 512px"
+            />
+          </div>
         </section>
 
         <section id="meetings" className="flex flex-col gap-6 scroll-mt-28">
