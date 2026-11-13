@@ -44,39 +44,7 @@ export const kmanPhoto: SitePhoto = {
   filePage: "https://commons.wikimedia.org/wiki/File:S67_Airport_2007.jpg",
 };
 
-export const landingPhoto: SitePhoto = {
-  id: "182-landing",
-  src: "/images/cessna-182p-d-eend-landing.webp",
-  width: 2400,
-  height: 1802,
-  alt: "A blue-and-white Cessna 182P Skylane, registration D-EEND, on short final with landing gear down.",
-  caption:
-    "A Cessna 182P Skylane on short final at Hilversum Airport.",
-  author: "Alf van Beem",
-  license: "CC0",
-  licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
-  filePage:
-    "https://commons.wikimedia.org/wiki/File:D-EEND_Cessna_182P_landing_at_Hilversum_Airport_(ICAO_EHHV),_photo4.JPG",
-};
-
-export const runwayPhoto: SitePhoto = {
-  id: "runway-approach",
-  src: "/images/philip-billard-runway-approach.webp",
-  width: 1280,
-  height: 853,
-  alt: "View from a small airplane approaching a runway surrounded by fields, hangars, and a clear evening sky.",
-  caption:
-    "On approach to Runway 36 at Philip Billard Municipal Airport in Topeka, Kansas.",
-  author: "Andyring",
-  license: "CC BY-SA 4.0",
-  licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-  filePage:
-    "https://commons.wikimedia.org/wiki/File:Topeka_Philip_Billard_airport.jpg",
-};
-
 export const sitePhotos: SitePhoto[] = [
   heroPhoto,
   kmanPhoto,
-  landingPhoto,
-  runwayPhoto,
 ];

@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import { MailerLiteSignupForm } from "@/lib/mailerlite-signup-form";
 import { PhotoFigure } from "@/lib/photo-figure";
-import { heroPhoto, kmanPhoto, landingPhoto, runwayPhoto } from "@/lib/photos";
+import { heroPhoto, kmanPhoto } from "@/lib/photos";
 
 function SourceLinks({
   sources,
@@ -174,16 +174,6 @@ export default function Home() {
             sizes="(max-width: 1024px) 100vw, 1024px"
             aspectClassName="aspect-[16/9] sm:aspect-[2/1]"
           />
-          <div className="grid gap-8 sm:grid-cols-2">
-            <PhotoFigure
-              photo={landingPhoto}
-              sizes="(max-width: 640px) 100vw, 512px"
-            />
-            <PhotoFigure
-              photo={runwayPhoto}
-              sizes="(max-width: 640px) 100vw, 512px"
-            />
-          </div>
         </section>
 
         <section id="meetings" className="flex flex-col gap-6 scroll-mt-28">
