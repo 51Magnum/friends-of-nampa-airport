@@ -100,20 +100,37 @@ export const watchingItems: WatchingItem[] = [
   },
   {
     id: "hangar-sales",
-    title: "Hangar sales",
-    status: "Unverified — looking for official details",
+    title: "Hangars 0450 and 0540",
+    status: "Airport Commission action item; no published decision yet",
     whyItMatters:
-      "Hangar availability and who owns or leases buildings on the field matter to airport users. We have not found a city agenda item or official notice that city-owned hangars at Nampa Municipal Airport are being offered for sale. The city currently rents 115 hangars and lists no hangar-development proposals on its Airfield Development page. Private hangars on the airport are sometimes sold separately; that is not the same as a city sale.",
+      "These two city-owned hangars at Nampa Municipal Airport have the highest repair estimates in the city’s hangar assessment (about $500,000 for 0450 and $605,000 for 0540). Council and the Airport Commission have been discussing what to do with them, including possible sale or demolition, but no published Commission decision or public notice of sale was found after the November 9, 2026 meeting.",
+    note: "April 16, 2026 City Council workshop minutes say Council directed staff to get bids to demolish the two hangars in need of the most repair. May 11 Airport Commission minutes report that staff said Council wanted to move forward with a sale. The Commission tabled the item on July 13, 2026, and it returned as an action item on November 9. Official records use hangar numbers 0450 and 0540. Minutes and a recording of the November meeting have not been posted.",
     sources: [
       {
-        label: "City hangar rentals",
-        href: "https://www.cityofnampa.us/382/City-Rentals",
+        label: "Nov. 9 Commission agenda",
+        href: "https://nampa.primegov.com/Public/CompiledDocument?compileOutputType=1&meetingTemplateId=10476",
       },
       {
-        label: "Airfield development",
-        href: "https://www.cityofnampa.us/125/Airfield-Development",
+        label: "May 11 Commission minutes",
+        href: "https://nampa.primegov.com/Public/CompiledDocument?compileOutputType=1&meetingTemplateId=9575",
+      },
+      {
+        label: "July 13 Commission minutes",
+        href: "https://nampa.primegov.com/Public/CompiledDocument?compileOutputType=1&meetingTemplateId=9941",
+      },
+      {
+        label: "April 16 Council workshop minutes",
+        href: "https://nampa.primegov.com/Public/CompiledDocument?compileOutputType=1&meetingTemplateId=9367",
+      },
+      {
+        label: "Hangar assessment",
+        href: "https://www.cityofnampa.us/DocumentCenter/View/19852/Nampa_Airport_Hangar_Assessment_revised_jul_25",
+      },
+      {
+        label: "Meeting portal",
+        href: "https://nampa.primegov.com/public/portal",
       },
     ],
-    verified: false,
+    verified: true,
   },
 ];

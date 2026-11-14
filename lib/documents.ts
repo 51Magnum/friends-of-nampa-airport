@@ -17,6 +17,15 @@ export type OfficialDocument = {
  */
 export const officialDocuments: OfficialDocument[] = [
   {
+    id: "airport-commission-2026-11-09-agenda",
+    title: "Airport Commission agenda (Nov. 9, 2026)",
+    date: "2026-11-09",
+    from: "Nampa Airport Commission",
+    href: "/docs/airport-commission-2026-11-09-agenda.pdf",
+    topic: "Hangars 0450 and 0540",
+    relatedWatchItemIds: ["hangar-sales"],
+  },
+  {
     id: "faa-helena-crosscreek-2026-11-13",
     title: "FAA letter (Nov. 13, 2026)",
     date: "2026-11-13",
@@ -60,6 +69,42 @@ export const officialDocuments: OfficialDocument[] = [
     href: "/docs/aopa-braeburn-2026-10-01.pdf",
     topic: "Braeburn Creek",
     relatedWatchItemIds: ["braeburn-creek"],
+  },
+  {
+    id: "airport-commission-2026-07-13-minutes",
+    title: "Airport Commission minutes (July 13, 2026)",
+    date: "2026-07-13",
+    from: "Nampa Airport Commission",
+    href: "/docs/airport-commission-2026-07-13-minutes.pdf",
+    topic: "Hangars 0450 and 0540",
+    relatedWatchItemIds: ["hangar-sales"],
+  },
+  {
+    id: "airport-commission-2026-05-11-minutes",
+    title: "Airport Commission minutes (May 11, 2026)",
+    date: "2026-05-11",
+    from: "Nampa Airport Commission",
+    href: "/docs/airport-commission-2026-05-11-minutes.pdf",
+    topic: "Hangars 0450 and 0540",
+    relatedWatchItemIds: ["hangar-sales"],
+  },
+  {
+    id: "city-council-workshop-2026-04-16-minutes",
+    title: "City Council workshop minutes (April 16, 2026)",
+    date: "2026-04-16",
+    from: "Nampa City Council",
+    href: "/docs/city-council-workshop-2026-04-16-minutes.pdf",
+    topic: "Hangars 0450 and 0540",
+    relatedWatchItemIds: ["hangar-sales"],
+  },
+  {
+    id: "nampa-airport-hangar-assessment-2025-07",
+    title: "Hangar Assessment (updated July 2025)",
+    date: "2024-08-28",
+    from: "City of Nampa",
+    href: "https://www.cityofnampa.us/DocumentCenter/View/19852/Nampa_Airport_Hangar_Assessment_revised_jul_25",
+    topic: "Hangars 0450 and 0540",
+    relatedWatchItemIds: ["hangar-sales"],
   },
 ];
 

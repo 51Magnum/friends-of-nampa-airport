@@ -96,16 +96,34 @@ describe("watchingItems", () => {
     expect(JSON.stringify(item?.sources)).not.toMatch(/\.pdf/i);
   });
 
-  it("marks hangar sales as an unverified placeholder", () => {
+  it("records verified facts about city-owned hangars 0450 and 0540", () => {
     const item = watchingItems.find((entry) => entry.id === "hangar-sales");
     expect(item).toBeDefined();
-    expect(item?.verified).toBe(false);
-    expect(item?.status).toMatch(/unverified/i);
+    expect(item?.verified).toBe(true);
+    expect(item?.title).toBe("Hangars 0450 and 0540");
+    expect(item?.status).not.toMatch(/unverified/i);
+    expect(item?.status).toMatch(/no published decision/i);
+    expect(item?.whyItMatters).toMatch(/0450/);
+    expect(item?.whyItMatters).toMatch(/0540/);
+    expect(item?.whyItMatters).toMatch(/\$500,000/);
+    expect(item?.whyItMatters).toMatch(/\$605,000/);
+    expect(item?.whyItMatters).toMatch(/sale or demolition/);
+    expect(item?.whyItMatters).toMatch(/November 9, 2026/);
+    expect(item?.note).toMatch(/April 16, 2026/);
+    expect(item?.note).toMatch(/demolish/);
+    expect(item?.note).toMatch(/sale/);
+    expect(item?.note).toMatch(/July 13, 2026/);
+    expect(item?.note).toMatch(/0450 and 0540/);
     expect(item?.nextDate).toBeUndefined();
-    expect(
-      item?.sources.some(
-        (source) => source.href === "https://www.cityofnampa.us/382/City-Rentals",
-      ),
-    ).toBe(true);
+    expect(item?.sources.map((source) => source.href)).toEqual(
+      expect.arrayContaining([
+        "https://nampa.primegov.com/Public/CompiledDocument?compileOutputType=1&meetingTemplateId=10476",
+        "https://nampa.primegov.com/Public/CompiledDocument?compileOutputType=1&meetingTemplateId=9575",
+        "https://nampa.primegov.com/Public/CompiledDocument?compileOutputType=1&meetingTemplateId=9941",
+        "https://nampa.primegov.com/Public/CompiledDocument?compileOutputType=1&meetingTemplateId=9367",
+        "https://www.cityofnampa.us/DocumentCenter/View/19852/Nampa_Airport_Hangar_Assessment_revised_jul_25",
+        "https://nampa.primegov.com/public/portal",
+      ]),
+    );
   });
 });
