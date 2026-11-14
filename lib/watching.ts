@@ -12,6 +12,7 @@ export type WatchingItem = {
   nextDate?: string;
   nextDateLabel?: string;
   howToWeighIn?: string;
+  note?: string;
   /** Optional official-letter summary. Do not link a hosted PDF until approved. */
   letter?: {
     title: string;
@@ -39,6 +40,7 @@ export const watchingItems: WatchingItem[] = [
     nextDate: "2027-01-04",
     nextDateLabel:
       "Next: Monday, Jan. 4, 2027, 6:00 p.m. MST, Council Chambers, City Hall",
+    note: "The FAA, Idaho Transportation Department Division of Aeronautics, and AOPA have submitted letters on airport compatibility.",
     sources: [
       {
         label: "City public hearings",

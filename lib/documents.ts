@@ -25,6 +25,33 @@ export const officialDocuments: OfficialDocument[] = [
     topic: "Crosscreek",
     relatedWatchItemIds: ["crosscreek"],
   },
+  {
+    id: "faa-helena-braeburn-2026-10-16",
+    title: "FAA letter (Oct. 16, 2026)",
+    date: "2026-10-16",
+    from: "FAA Helena Airports District Office",
+    href: "/docs/faa-helena-braeburn-2026-10-16.pdf",
+    topic: "Braeburn Creek",
+    relatedWatchItemIds: ["braeburn-creek"],
+  },
+  {
+    id: "itd-aeronautics-braeburn-2026-10-15",
+    title: "ITD Aeronautics letter (Oct. 15, 2026)",
+    date: "2026-10-15",
+    from: "Idaho Transportation Department Division of Aeronautics",
+    href: "/docs/itd-aeronautics-braeburn-2026-10-15.pdf",
+    topic: "Braeburn Creek",
+    relatedWatchItemIds: ["braeburn-creek"],
+  },
+  {
+    id: "aopa-braeburn-2026-10-01",
+    title: "AOPA letter (Oct. 1, 2026)",
+    date: "2026-10-01",
+    from: "Aircraft Owners and Pilots Association",
+    href: "/docs/aopa-braeburn-2026-10-01.pdf",
+    topic: "Braeburn Creek",
+    relatedWatchItemIds: ["braeburn-creek"],
+  },
 ];
 
 function byDateNewestFirst(a: OfficialDocument, b: OfficialDocument): number {

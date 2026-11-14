@@ -46,9 +46,9 @@ describe("watchingItems", () => {
           "https://www.cityofnampa.us/1433/Upcoming-Public-Hearings",
       ),
     ).toBe(true);
-    // The October 1 AOPA-to-FAA Helena letter was not independently verified.
-    expect(item?.whyItMatters.toLowerCase()).not.toMatch(/aopa/);
-    expect(item?.whyItMatters.toLowerCase()).not.toMatch(/helena/);
+    expect(item?.note).toMatch(
+      /The FAA, Idaho Transportation Department Division of Aeronautics, and AOPA have submitted letters on airport compatibility/,
+    );
   });
 
   it("treats Crosscreek as the November 24 Victory Road P&Z item", () => {

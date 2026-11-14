@@ -57,6 +57,9 @@ function WatchingCard({ item }: { item: WatchingItem }) {
         <p className="mt-1 text-sm font-medium text-navy">{item.nextDateLabel}</p>
       ) : null}
       <p className="mt-1 text-sm leading-6 text-muted">{item.whyItMatters}</p>
+      {item.note ? (
+        <p className="mt-1 text-sm leading-6 text-muted">{item.note}</p>
+      ) : null}
       {item.letter ? (
         <details className="mt-2 text-sm leading-6 text-muted">
           <summary className="cursor-pointer font-medium text-navy">

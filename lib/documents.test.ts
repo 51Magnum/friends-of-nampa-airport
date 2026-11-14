@@ -45,10 +45,24 @@ describe("officialDocuments", () => {
     ]);
   });
 
-  it("does not include an AOPA Braeburn letter when no public copy is available", () => {
-    const text = JSON.stringify(officialDocuments).toLowerCase();
-    expect(text).not.toMatch(/aopa/);
-    expect(documentsForWatchItem("braeburn-creek")).toEqual([]);
+  it("hosts the Braeburn compatibility letters newest first", () => {
+    expect(documentsForWatchItem("braeburn-creek").map((doc) => doc.id)).toEqual([
+      "faa-helena-braeburn-2026-10-16",
+      "itd-aeronautics-braeburn-2026-10-15",
+      "aopa-braeburn-2026-10-01",
+    ]);
+    expect(documentsNewestFirst().map((doc) => doc.id)).toEqual([
+      "faa-helena-crosscreek-2026-11-13",
+      "faa-helena-braeburn-2026-10-16",
+      "itd-aeronautics-braeburn-2026-10-15",
+      "aopa-braeburn-2026-10-01",
+    ]);
+    const aopa = officialDocuments.find(
+      (document) => document.id === "aopa-braeburn-2026-10-01",
+    );
+    expect(aopa?.href).toBe("/docs/aopa-braeburn-2026-10-01.pdf");
+    expect(aopa?.date).toBe("2026-10-01");
+    expect(aopa?.from).toBe("Aircraft Owners and Pilots Association");
   });
 
   it("sorts documents newest first", () => {
