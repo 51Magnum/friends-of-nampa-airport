@@ -31,6 +31,7 @@ export const metadata: Metadata = {
 
 const nav = [
   { href: "#announcements", label: "Announcements" },
+  { href: "#whats-next", label: "What’s next" },
   { href: "#meetings", label: "Meetings" },
   { href: "#airport-info", label: "Airport info" },
   { href: "#get-involved", label: "Get involved" },

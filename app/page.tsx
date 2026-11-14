@@ -9,6 +9,7 @@ import {
   siteConfig,
   volunteerRoles,
 } from "@/lib/site-config";
+import { UpcomingEventsSection } from "@/lib/upcoming-events";
 import Image from "next/image";
 import { MailerLiteSignupForm } from "@/lib/mailerlite-signup-form";
 import { PhotoFigure } from "@/lib/photo-figure";
@@ -174,6 +175,11 @@ export default function Home() {
             sizes="(max-width: 1024px) 100vw, 1024px"
             aspectClassName="aspect-[16/9] sm:aspect-[2/1]"
           />
+        </section>
+
+        <section id="whats-next" className="flex flex-col gap-6 scroll-mt-28">
+          <SectionHeading>What’s next</SectionHeading>
+          <UpcomingEventsSection />
         </section>
 
         <section id="meetings" className="flex flex-col gap-6 scroll-mt-28">
