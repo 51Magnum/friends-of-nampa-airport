@@ -178,7 +178,7 @@ export const kmanUpdates: AnnouncementItem[] = [
 ];
 
 export const meetingAgenda = [
-  "Airport manager update",
+  "Airport update",
   "City and FAA news",
   "Projects and needs",
   "Volunteer asks",
