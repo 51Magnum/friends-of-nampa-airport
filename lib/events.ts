@@ -55,7 +55,7 @@ export const upcomingEvents: UpcomingEvent[] = [
   },
   {
     id: "pz-2026-11-24",
-    title: "P&Z: Victory Road annexation (runway buffer)",
+    title: "P&Z: Crosscreek annexation (Victory Rd)",
     kind: "Planning & Zoning",
     date: "2026-11-24",
     time: "6:00 p.m. MST",

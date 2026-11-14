@@ -41,8 +41,9 @@ function EventList({ events }: { events: UpcomingEvent[] }) {
     <ul className="grid gap-3 sm:grid-cols-2">
       {events.map((event) => (
         <li
+          id={event.id}
           key={event.id}
-          className="rounded-xl border border-line bg-paper px-4 py-3"
+          className="scroll-mt-28 rounded-xl border border-line bg-paper px-4 py-3"
         >
           <p className="text-sm font-medium text-navy">
             {formatEventDate(event)}

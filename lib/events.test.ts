@@ -159,7 +159,7 @@ describe("upcoming event data", () => {
     ).toBe(false);
     expect(
       upcomingEvents.find((event) => event.id === "pz-2026-11-24")?.title,
-    ).toMatch(/runway buffer/i);
+    ).toBe("P&Z: Crosscreek annexation (Victory Rd)");
   });
 
   it("describes Commission and EAA 103 by schedule, without invented EAA dates", () => {

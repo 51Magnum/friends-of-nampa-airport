@@ -10,6 +10,7 @@ import {
   volunteerRoles,
 } from "@/lib/site-config";
 import { UpcomingEventsSection } from "@/lib/upcoming-events";
+import { WatchingSection } from "@/lib/watching-section";
 import Image from "next/image";
 import { MailerLiteSignupForm } from "@/lib/mailerlite-signup-form";
 import { PhotoFigure } from "@/lib/photo-figure";
@@ -180,6 +181,11 @@ export default function Home() {
         <section id="whats-next" className="flex flex-col gap-6 scroll-mt-28">
           <SectionHeading>What’s next</SectionHeading>
           <UpcomingEventsSection />
+        </section>
+
+        <section id="watching" className="flex flex-col gap-6 scroll-mt-28">
+          <SectionHeading>What we’re watching</SectionHeading>
+          <WatchingSection />
         </section>
 
         <section id="meetings" className="flex flex-col gap-6 scroll-mt-28">
