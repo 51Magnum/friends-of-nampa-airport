@@ -26,6 +26,15 @@ export const officialDocuments: OfficialDocument[] = [
     relatedWatchItemIds: ["crosscreek"],
   },
   {
+    id: "iaa-braeburn-2026-11-02",
+    title: "IAA letter (Nov. 2, 2026)",
+    date: "2026-11-02",
+    from: "Idaho Aviation Association",
+    href: "/docs/iaa-braeburn-2026-11-02.pdf",
+    topic: "Braeburn Creek",
+    relatedWatchItemIds: ["braeburn-creek"],
+  },
+  {
     id: "faa-helena-braeburn-2026-10-16",
     title: "FAA letter (Oct. 16, 2026)",
     date: "2026-10-16",

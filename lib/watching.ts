@@ -40,7 +40,7 @@ export const watchingItems: WatchingItem[] = [
     nextDate: "2027-01-04",
     nextDateLabel:
       "Next: Monday, Jan. 4, 2027, 6:00 p.m. MST, Council Chambers, City Hall",
-    note: "The FAA, Idaho Transportation Department Division of Aeronautics, and AOPA have submitted letters on airport compatibility.",
+    note: "The FAA, Idaho Transportation Department Division of Aeronautics, AOPA, and the Idaho Aviation Association have submitted letters on airport compatibility.",
     sources: [
       {
         label: "City public hearings",

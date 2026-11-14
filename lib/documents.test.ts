@@ -47,12 +47,14 @@ describe("officialDocuments", () => {
 
   it("hosts the Braeburn compatibility letters newest first", () => {
     expect(documentsForWatchItem("braeburn-creek").map((doc) => doc.id)).toEqual([
+      "iaa-braeburn-2026-11-02",
       "faa-helena-braeburn-2026-10-16",
       "itd-aeronautics-braeburn-2026-10-15",
       "aopa-braeburn-2026-10-01",
     ]);
     expect(documentsNewestFirst().map((doc) => doc.id)).toEqual([
       "faa-helena-crosscreek-2026-11-13",
+      "iaa-braeburn-2026-11-02",
       "faa-helena-braeburn-2026-10-16",
       "itd-aeronautics-braeburn-2026-10-15",
       "aopa-braeburn-2026-10-01",

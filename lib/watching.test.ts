@@ -47,7 +47,7 @@ describe("watchingItems", () => {
       ),
     ).toBe(true);
     expect(item?.note).toMatch(
-      /The FAA, Idaho Transportation Department Division of Aeronautics, and AOPA have submitted letters on airport compatibility/,
+      /The FAA, Idaho Transportation Department Division of Aeronautics, AOPA, and the Idaho Aviation Association have submitted letters on airport compatibility/,
     );
   });
 
