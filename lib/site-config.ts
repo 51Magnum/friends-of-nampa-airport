@@ -167,15 +167,31 @@ export const kmanUpdates: AnnouncementItem[] = [
     ],
   },
   {
-    text: "Amazon Prime Air drone deliveries, which began October 30, 2026, operate from a fulfillment center on Franklin Road — not from Nampa Municipal Airport.",
+    text: "Amazon Prime Air drone deliveries, which began October 30, 2026, operate from a fulfillment center on Franklin Road, not from Nampa Municipal Airport. During the city's May 2026 permit review, the Airport Commission raised concerns about airspace coordination and safety, and Amazon said the flights cannot conflict with the airport's airspace. After the service started, Nampa received about 20 to 25 inquiries from residents about drone noise; the city is reviewing whether operations comply with the conditional-use permit, and Amazon has said it is evaluating possible flight-path changes.",
     sources: [
       {
         label: "KTVB, October 30, 2026",
         href: "https://www.ktvb.com/article/news/local/amazon-starts-drone-deliveries-nampa-part-boise-idaho/277-e865a55f-94cf-4d9f-892d-2c5ee128a52f",
       },
       {
-        label: "City of Nampa information sheet",
-        href: "https://www.cityofnampa.us/DocumentCenter/View/20951/Amazon-Prime-Air-Delivery-Information-page",
+        label: "BoiseDev, May 27, 2026",
+        href: "https://boisedev.com/news/2026/05/27/nampa-greenlights-drone-shipments-final-approval-delivery-areas-still-pending/",
+      },
+      {
+        label: "Idaho Statesman, May 29, 2026",
+        href: "https://www.idahostatesman.com/news/local/community/canyon-county/article315914793.html",
+      },
+      {
+        label: "BoiseDev, November 11, 2026",
+        href: "https://boisedev.com/news/2026/11/11/amazon-recently-began-drone-delivery-from-nampa-complaints-are-prompting-city-inquiries/",
+      },
+      {
+        label: "KTVB, November 11, 2026",
+        href: "https://www.ktvb.com/article/news/local/idaho/amazon-adjust-drone-delivery-flight-paths-nearby-residents-complain-constant-buzz/277-18b1d67c-722f-4723-a237-6be86824680c",
+      },
+      {
+        label: "City of Nampa, Drone Delivery",
+        href: "https://www.cityofnampa.us/1793/Drone-Delivery",
       },
     ],
   },
