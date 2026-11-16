@@ -145,11 +145,15 @@ export const kmanUpdates: AnnouncementItem[] = [
     ],
   },
   {
-    text: "A stormwater infiltration project at the airport was completed in March 2026. On November 2, 2026, City Council approved a settlement with the U.S. EPA related to earlier stormwater allegations.",
+    text: "A stormwater infiltration project at the airport was completed in March 2026. On November 2, 2026, City Council approved a settlement with the U.S. EPA related to earlier stormwater allegations. The EPA is taking public comments on the proposed settlement through December 10, 2026.",
     sources: [
       {
         label: "BoiseDev, November 3, 2026",
         href: "https://boisedev.com/news/2026/11/03/nampa-fined-thousands-of-dollars-for-pollution-from-its-airport-a-solution-is-already-built/",
+      },
+      {
+        label: "EPA public notice (comments due December 10, 2026)",
+        href: "https://www.epa.gov/publicnotices/proposed-settlement-nampa-municipal-airport-clean-water-act-violations-idaho",
       },
     ],
   },
