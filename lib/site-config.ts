@@ -97,6 +97,28 @@ export const gettingStarted = {
   ],
 };
 
+export const asapWorkshopNews = {
+  id: "asap-workshop",
+  title: "Draft Airport Specific Area Plan workshop, Thursday, Nov. 19",
+  paragraphs: [
+    "The City of Nampa City Council and Planning & Zoning Commission will hold a joint special meeting (workshop) on Thursday, November 19, 2026, at 8:00 a.m. MST at City Hall, 411 Third Street South, Nampa. The meeting will also be livestreamed on the City’s YouTube channel. The only item on the agenda is a discussion of the draft Airport Specific Area Plan (ASAP). This is a workshop: the public may observe, but the agenda does not include a public-comment item.",
+    "The ASAP is a draft plan. It proposes a long-range framework for land use, transportation, and airspace protection around Nampa Municipal Airport. The draft boundary covers the airport and surrounding land in the airport’s influence area, including property already in the city and property in the Nampa Impact Area under Canyon County jurisdiction. The packet’s maps and text describe that boundary. Figures given for its size are not consistent in the draft, so please rely on the City’s official maps.",
+    "The draft organizes compatibility guidance into three Airport Hazard Reference Areas (AHRAs), based on FAA Part 77 surfaces, the runway protection zones for Runway 11/29, and Idaho Transportation Department guidance. AHRA-1 covers the runway protection zones and immediate approach and departure surfaces and carries the most restrictive standards (the draft treats new residential and most other uses in the runway protection zone as not compatible). AHRA-2 is a transition buffer around that core. AHRA-3 is an outer influence area; only a small portion of AHRA-3 is inside the ASAP boundary.",
+    "The draft also recommends land-use compatibility rules, height limits and FAA Form 7460-1 review for structures that could affect airspace, and transportation steps such as reserving right-of-way for future roads and addressing incompatible roadway conditions in the western runway protection zone at Garrity Boulevard and Kings Road.",
+    "The draft has not been adopted. The plan describes later public hearings before any adoption, comprehensive-plan map update, airport overlay district, or new airport zoning would take effect. For the official agenda, draft plan, and staff presentation, use the City’s meeting page linked below.",
+  ],
+  sources: [
+    {
+      label: "City agenda and packet",
+      href: "https://nampa.primegov.com/Portal/Meeting?meetingTemplateId=10318",
+    },
+    {
+      label: "Livestream",
+      href: "https://www.youtube.com/@cityofnampapublicmeetings",
+    },
+  ],
+} as const;
+
 export const kmanUpdateIntro =
   "A short look at recent, publicly documented items (as of November 2026):";
 

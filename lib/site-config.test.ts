@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   SITE_DOMAIN,
   SITE_ORIGIN,
+  asapWorkshopNews,
   isUnresolvedPlaceholder,
   officialLinks,
   siteConfig,
@@ -61,5 +62,18 @@ describe("officialLinks", () => {
     for (const href of hrefs) {
       expect(href.startsWith("https://")).toBe(true);
     }
+  });
+});
+
+describe("asapWorkshopNews", () => {
+  it("points to the official City agenda and livestream", () => {
+    expect(asapWorkshopNews.title).toMatch(/draft Airport Specific Area Plan/i);
+    expect(asapWorkshopNews.paragraphs.join(" ")).toMatch(/8:00 a\.m\. MST/);
+    expect(asapWorkshopNews.paragraphs.join(" ")).toMatch(/does not include a public-comment item/);
+    expect(asapWorkshopNews.paragraphs.join(" ").toLowerCase()).not.toMatch(/shane/);
+    expect(asapWorkshopNews.sources.map((source) => source.href)).toEqual([
+      "https://nampa.primegov.com/Portal/Meeting?meetingTemplateId=10318",
+      "https://www.youtube.com/@cityofnampapublicmeetings",
+    ]);
   });
 });

@@ -69,10 +69,10 @@ describe("isUpcomingEvent and visibleUpcomingEvents", () => {
     const ids = visible.map((event) => event.id);
 
     expect(ids).toEqual([
+      "asap-workshop-2026-11-19",
       "warhawk-m1a1-workshop-2026-11-21",
       "pz-2026-11-24",
       "warhawk-winterfest-2026-11-28",
-      "warhawk-kilroy-2026-12-01",
     ]);
     expect(ids).not.toContain("warhawk-veterans-free-week-2026");
     expect(ids).not.toContain("airport-commission-2026-12-14");
@@ -144,6 +144,7 @@ describe("upcoming event data", () => {
 
     expect(ids).toEqual([
       "warhawk-veterans-free-week-2026",
+      "asap-workshop-2026-11-19",
       "warhawk-m1a1-workshop-2026-11-21",
       "pz-2026-11-24",
       "warhawk-winterfest-2026-11-28",
@@ -154,9 +155,14 @@ describe("upcoming event data", () => {
       "warhawk-homeschool-2027-02-10",
     ]);
 
-    expect(
-      upcomingEvents.some((event) => event.kind === "City Council"),
-    ).toBe(false);
+    const workshop = upcomingEvents.find(
+      (event) => event.id === "asap-workshop-2026-11-19",
+    );
+    expect(workshop?.kind).toBe("City Council / Planning & Zoning");
+    expect(workshop?.time).toBe("8:00 a.m. MST");
+    expect(workshop?.href).toBe(
+      "https://nampa.primegov.com/Portal/Meeting?meetingTemplateId=10318",
+    );
     expect(
       upcomingEvents.find((event) => event.id === "pz-2026-11-24")?.title,
     ).toBe("P&Z: Crosscreek annexation (Victory Rd)");

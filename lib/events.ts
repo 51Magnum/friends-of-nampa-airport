@@ -44,6 +44,17 @@ export const upcomingEvents: UpcomingEvent[] = [
     sourceLabel: "Warhawk Air Museum",
   },
   {
+    id: "asap-workshop-2026-11-19",
+    title: "Workshop: draft Airport Specific Area Plan",
+    kind: "City Council / Planning & Zoning",
+    date: "2026-11-19",
+    time: "8:00 a.m. MST",
+    location: "City Hall, 411 Third Street South",
+    href: "https://nampa.primegov.com/Portal/Meeting?meetingTemplateId=10318",
+    sourceLabel: "City agenda",
+    note: "Joint special meeting (workshop) of City Council and the Planning & Zoning Commission. The only agenda item is a discussion of the draft Airport Specific Area Plan. The public may observe; the agenda does not include a public-comment item. Livestream: https://www.youtube.com/@cityofnampapublicmeetings",
+  },
+  {
     id: "warhawk-m1a1-workshop-2026-11-21",
     title: "M1A1 Abrams model building workshop",
     kind: "Warhawk Air Museum",
