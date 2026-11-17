@@ -157,6 +157,15 @@ export default function Home() {
               Official sources:
               <SourceLinks sources={[...asapWorkshopNews.sources]} />
             </p>
+            <p className="rounded-xl border border-amber bg-amber-soft px-4 py-4 text-base font-bold leading-7 text-navy">
+              {asapWorkshopNews.signupCallout.text}{" "}
+              <a
+                href={asapWorkshopNews.signupCallout.href}
+                className="font-bold text-sky underline decoration-sky-soft underline-offset-4 hover:text-navy"
+              >
+                {asapWorkshopNews.signupCallout.linkLabel}
+              </a>
+            </p>
           </article>
 
           <article className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-6 shadow-sm sm:p-8">

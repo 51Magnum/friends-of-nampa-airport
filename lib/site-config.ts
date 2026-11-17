@@ -117,6 +117,11 @@ export const asapWorkshopNews = {
       href: "https://www.youtube.com/@cityofnampapublicmeetings",
     },
   ],
+  signupCallout: {
+    text: "If you found this useful, please help spread the word and encourage others to sign up for Friends of Nampa Airport updates on our website.",
+    linkLabel: "Sign up for updates",
+    href: "#signup",
+  },
 } as const;
 
 export const kmanUpdateIntro =

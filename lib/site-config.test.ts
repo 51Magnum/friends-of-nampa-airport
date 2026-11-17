@@ -75,5 +75,10 @@ describe("asapWorkshopNews", () => {
       "https://nampa.primegov.com/Portal/Meeting?meetingTemplateId=10318",
       "https://www.youtube.com/@cityofnampapublicmeetings",
     ]);
+    expect(asapWorkshopNews.signupCallout.text).toMatch(
+      /help spread the word and encourage others to sign up/,
+    );
+    expect(asapWorkshopNews.signupCallout.href).toBe("#signup");
+    expect(asapWorkshopNews.signupCallout.linkLabel).toBe("Sign up for updates");
   });
 });
