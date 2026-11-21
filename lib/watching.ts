@@ -56,14 +56,14 @@ export const watchingItems: WatchingItem[] = [
   {
     id: "crosscreek",
     title: "Crosscreek annexation",
-    status: "Planning & Zoning public hearing scheduled",
+    status: "Planning & Zoning public hearing Tuesday, Nov. 24; recommendation to City Council",
     whyItMatters:
       "Annexation and zoning of about 52 acres to RS-4 at Victory Road (ANN-00373-2026), filed September 3, 2026. The city’s hearing notice describes up to 169 single-family homes with a proposed 1,000-foot aviation-compatible buffer from the Nampa airport runway. The future land use map lists the site as mixed industrial/airport. This is the same November 24 Planning & Zoning item listed under What’s next.",
     nextDate: "2026-11-24",
     nextDateLabel:
       "Next: Tuesday, Nov. 24, 2026, 6:00 p.m. MST, Council Chambers, 411 3rd Street South",
     howToWeighIn:
-      "Written comments for the staff report are due Wednesday, Nov. 18, noon MST, to PZall@cityofnampa.us. Portal comments are accepted until Tuesday, Nov. 24, noon MST.",
+      "The Wednesday, Nov. 18, noon MST deadline to have written comments included in the staff report has passed. Comments sent after that are still forwarded to the Commission and posted for the public record. Portal comments are accepted until Tuesday, Nov. 24, noon MST. You can also email PZall@cityofnampa.us, or sign up to speak at the hearing (typically 3 minutes).",
     letter: {
       title: "FAA letter (Nov. 13, 2026)",
       summary:
@@ -76,8 +76,16 @@ export const watchingItems: WatchingItem[] = [
     },
     sources: [
       {
+        label: "Announcement",
+        href: "#pz-crosscreek",
+      },
+      {
         label: "What’s next listing",
         href: "#pz-2026-11-24",
+      },
+      {
+        label: "City agenda and packet",
+        href: "https://nampa.primegov.com/Portal/Meeting?meetingTemplateId=10512",
       },
       {
         label: "City public hearings",

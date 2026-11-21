@@ -163,9 +163,12 @@ describe("upcoming event data", () => {
     expect(workshop?.href).toBe(
       "https://nampa.primegov.com/Portal/Meeting?meetingTemplateId=10318",
     );
-    expect(
-      upcomingEvents.find((event) => event.id === "pz-2026-11-24")?.title,
-    ).toBe("P&Z: Crosscreek annexation (Victory Rd)");
+    const pz = upcomingEvents.find((event) => event.id === "pz-2026-11-24");
+    expect(pz?.title).toBe("P&Z: Crosscreek annexation (Victory Rd)");
+    expect(pz?.time).toBe("6:00 p.m. MST");
+    expect(pz?.href).toBe(
+      "https://nampa.primegov.com/Portal/Meeting?meetingTemplateId=10512",
+    );
   });
 
   it("describes Commission and EAA 103 by schedule, without invented EAA dates", () => {

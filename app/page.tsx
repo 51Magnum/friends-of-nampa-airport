@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import {
-  asapWorkshopNews,
   gettingStarted,
+  homepageAnnouncements,
   isUnresolvedPlaceholder,
   kmanUpdateIntro,
   kmanUpdates,
@@ -141,32 +141,35 @@ export default function Home() {
         <section id="announcements" className="flex flex-col gap-8 scroll-mt-28">
           <SectionHeading>Announcements</SectionHeading>
 
-          <article
-            id={asapWorkshopNews.id}
-            className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-6 shadow-sm sm:p-8"
-          >
-            <h3 className="text-2xl font-semibold tracking-tight text-navy">
-              {asapWorkshopNews.title}
-            </h3>
-            {asapWorkshopNews.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="leading-7 text-muted">
-                {paragraph}
+          {homepageAnnouncements.map((announcement) => (
+            <article
+              key={announcement.id}
+              id={announcement.id}
+              className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-6 shadow-sm sm:p-8"
+            >
+              <h3 className="text-2xl font-semibold tracking-tight text-navy">
+                {announcement.title}
+              </h3>
+              {announcement.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="leading-7 text-muted">
+                  {paragraph}
+                </p>
+              ))}
+              <p className="leading-7 text-muted">
+                Official sources:
+                <SourceLinks sources={[...announcement.sources]} />
               </p>
-            ))}
-            <p className="leading-7 text-muted">
-              Official sources:
-              <SourceLinks sources={[...asapWorkshopNews.sources]} />
-            </p>
-            <p className="rounded-xl border border-amber bg-amber-soft px-4 py-4 text-base font-bold leading-7 text-navy">
-              {asapWorkshopNews.signupCallout.text}{" "}
-              <a
-                href={asapWorkshopNews.signupCallout.href}
-                className="font-bold text-sky underline decoration-sky-soft underline-offset-4 hover:text-navy"
-              >
-                {asapWorkshopNews.signupCallout.linkLabel}
-              </a>
-            </p>
-          </article>
+              <p className="rounded-xl border border-amber bg-amber-soft px-4 py-4 text-base font-bold leading-7 text-navy">
+                {announcement.signupCallout.text}{" "}
+                <a
+                  href={announcement.signupCallout.href}
+                  className="font-bold text-sky underline decoration-sky-soft underline-offset-4 hover:text-navy"
+                >
+                  {announcement.signupCallout.linkLabel}
+                </a>
+              </p>
+            </article>
+          ))}
 
           <article className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-6 shadow-sm sm:p-8">
             <h3 className="text-2xl font-semibold tracking-tight text-navy">

@@ -65,12 +65,16 @@ describe("watchingItems", () => {
     expect(item?.whyItMatters).toMatch(/RS-4/);
     expect(item?.whyItMatters).toMatch(/1,000-foot/);
     expect(item?.nextDate).toBe("2026-11-24");
+    expect(item?.status).toMatch(/recommendation to City Council/i);
     expect(item?.howToWeighIn).toMatch(/Nov\. 18/);
+    expect(item?.howToWeighIn).toMatch(/has passed/);
     expect(item?.howToWeighIn).toMatch(/PZall@cityofnampa\.us/);
     expect(item?.howToWeighIn).toMatch(/Nov\. 24, noon MST/);
     expect(item?.sources.map((source) => source.href)).toEqual(
       expect.arrayContaining([
+        "#pz-crosscreek",
         "#pz-2026-11-24",
+        "https://nampa.primegov.com/Portal/Meeting?meetingTemplateId=10512",
         "https://www.cityofnampa.us/1433/Upcoming-Public-Hearings",
         "https://www.cityofnampa.us/1616/Public-Comment",
         "https://www.cityofnampa.us/1722/Public-Hearings---the-Basics",

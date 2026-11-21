@@ -2,9 +2,12 @@ import { describe, expect, it } from "vitest";
 import {
   SITE_DOMAIN,
   SITE_ORIGIN,
+  announcementSignupCallout,
   asapWorkshopNews,
+  homepageAnnouncements,
   isUnresolvedPlaceholder,
   officialLinks,
+  pzCrosscreekNews,
   siteConfig,
 } from "./site-config";
 
@@ -78,7 +81,39 @@ describe("asapWorkshopNews", () => {
     expect(asapWorkshopNews.signupCallout.text).toMatch(
       /help spread the word and encourage others to sign up/,
     );
+    expect(asapWorkshopNews.signupCallout).toEqual(announcementSignupCallout);
     expect(asapWorkshopNews.signupCallout.href).toBe("#signup");
     expect(asapWorkshopNews.signupCallout.linkLabel).toBe("Sign up for updates");
+  });
+});
+
+
+describe("pzCrosscreekNews", () => {
+  it("states the Nov. 24 hearing facts and official participation links", () => {
+    const body = pzCrosscreekNews.paragraphs.join(" ");
+
+    expect(pzCrosscreekNews.id).toBe("pz-crosscreek");
+    expect(pzCrosscreekNews.title).toMatch(/Crosscreek/);
+    expect(pzCrosscreekNews.title).toMatch(/Nov\. 24/);
+    expect(body).toMatch(/6:00 p\.m\. MST/);
+    expect(body).toMatch(/411 Third Street South/);
+    expect(body).toMatch(/ANN-00373-2026/);
+    expect(body).toMatch(/recommendation to City Council/);
+    expect(body).toMatch(/12:00 noon MST on Tuesday, November 24/);
+    expect(body).toMatch(/pzall@cityofnampa\.us/);
+    expect(body.toLowerCase()).not.toMatch(/shane/);
+    expect(body.toLowerCase()).not.toMatch(/mueller/);
+    expect(body.toLowerCase()).not.toMatch(/watkins/);
+    expect(pzCrosscreekNews.sources.map((source) => source.href)).toEqual([
+      "https://nampa.primegov.com/Portal/Meeting?meetingTemplateId=10512",
+      "https://www.cityofnampa.us/1433/Upcoming-Public-Hearings",
+      "https://www.cityofnampa.us/1616/Public-Comment",
+      "https://www.cityofnampa.us/1722/Public-Hearings---the-Basics",
+      "https://www.youtube.com/@cityofnampapublicmeetings",
+      "/docs/faa-helena-crosscreek-2026-11-13.pdf",
+    ]);
+    expect(pzCrosscreekNews.signupCallout).toEqual(announcementSignupCallout);
+    expect(homepageAnnouncements[0]).toBe(pzCrosscreekNews);
+    expect(homepageAnnouncements[1]).toBe(asapWorkshopNews);
   });
 });
