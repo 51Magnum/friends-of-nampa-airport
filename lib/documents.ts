@@ -35,6 +35,15 @@ export const officialDocuments: OfficialDocument[] = [
     relatedWatchItemIds: ["crosscreek"],
   },
   {
+    id: "itd-aeronautics-crosscreek-2026-11-20",
+    title: "ITD Aeronautics letter (Nov. 20, 2026)",
+    date: "2026-11-20",
+    from: "Idaho Transportation Department Division of Aeronautics",
+    href: "/docs/itd-aeronautics-crosscreek-2026-11-20.pdf",
+    topic: "Crosscreek",
+    relatedWatchItemIds: ["crosscreek"],
+  },
+  {
     id: "iaa-braeburn-2026-11-02",
     title: "IAA letter (Nov. 2, 2026)",
     date: "2026-11-02",

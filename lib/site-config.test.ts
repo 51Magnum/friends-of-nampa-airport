@@ -111,7 +111,9 @@ describe("pzCrosscreekNews", () => {
       "https://www.cityofnampa.us/1722/Public-Hearings---the-Basics",
       "https://www.youtube.com/@cityofnampapublicmeetings",
       "/docs/faa-helena-crosscreek-2026-11-13.pdf",
+      "/docs/itd-aeronautics-crosscreek-2026-11-20.pdf",
     ]);
+    expect(body).toMatch(/November 20, 2026/);
     expect(pzCrosscreekNews.signupCallout).toEqual(announcementSignupCallout);
     expect(homepageAnnouncements[0]).toBe(pzCrosscreekNews);
     expect(homepageAnnouncements[1]).toBe(asapWorkshopNews);

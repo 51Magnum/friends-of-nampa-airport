@@ -58,7 +58,7 @@ export const watchingItems: WatchingItem[] = [
     title: "Crosscreek annexation",
     status: "Planning & Zoning public hearing Tuesday, Nov. 24; recommendation to City Council",
     whyItMatters:
-      "Annexation and zoning of about 52 acres to RS-4 at Victory Road (ANN-00373-2026), filed September 3, 2026. The city’s hearing notice describes up to 169 single-family homes with a proposed 1,000-foot aviation-compatible buffer from the Nampa airport runway. The future land use map lists the site as mixed industrial/airport. This is the same November 24 Planning & Zoning item listed under What’s next.",
+      "Annexation and zoning of about 52 acres to RS-4 at Victory Road (ANN-00373-2026), filed September 3, 2026. The city’s hearing notice describes up to 169 single-family homes with a proposed 1,000-foot aviation-compatible buffer from the Nampa airport runway. The city’s Future Land Use Map designates the site as Industrial; the staff report describes a provision to stretch Medium Density Residential from the south. This is the same November 24 Planning & Zoning item listed under What’s next.",
     nextDate: "2026-11-24",
     nextDateLabel:
       "Next: Tuesday, Nov. 24, 2026, 6:00 p.m. MST, Council Chambers, 411 3rd Street South",
@@ -74,6 +74,7 @@ export const watchingItems: WatchingItem[] = [
         "The FAA encourages the city to consider non-residential or lower-density uses for parcels bordering KMAN, along with buffers, lighting controls, and buyer disclosures, and asks to be kept informed of hearings.",
       ],
     },
+    note: "The FAA Helena Airports District Office (Nov. 13, 2026) and the Idaho Transportation Department Division of Aeronautics (Nov. 20, 2026) have submitted letters on airport compatibility.",
     sources: [
       {
         label: "Announcement",

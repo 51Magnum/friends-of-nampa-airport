@@ -41,6 +41,7 @@ describe("officialDocuments", () => {
     expect(letter?.topic).toBe("Crosscreek");
     expect(letter?.relatedWatchItemIds).toEqual(["crosscreek"]);
     expect(documentsForWatchItem("crosscreek").map((doc) => doc.id)).toEqual([
+      "itd-aeronautics-crosscreek-2026-11-20",
       "faa-helena-crosscreek-2026-11-13",
     ]);
   });
@@ -53,6 +54,7 @@ describe("officialDocuments", () => {
       "aopa-braeburn-2026-10-01",
     ]);
     expect(documentsNewestFirst().map((doc) => doc.id)).toEqual([
+      "itd-aeronautics-crosscreek-2026-11-20",
       "faa-helena-crosscreek-2026-11-13",
       "airport-commission-2026-11-09-agenda",
       "iaa-braeburn-2026-11-02",
