@@ -15,6 +15,7 @@ describe("archive entries", () => {
     const now = atDenver("2026-11-21T08:00:00");
     expect(archivedAnnouncementEntries(now).map((entry) => entry.id)).toEqual([
       "asap-workshop",
+      "new-airport-superintendent",
       "airport-annexation-rezone",
       "faa-grants",
     ]);

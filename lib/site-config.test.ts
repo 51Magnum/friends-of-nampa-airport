@@ -91,7 +91,10 @@ describe("asapWorkshopNews", () => {
 
 describe("pzCrosscreekNews", () => {
   it("states the Nov. 24 hearing facts and official participation links", () => {
-    const body = pzCrosscreekNews.paragraphs.join(" ");
+    const body = [
+      ...pzCrosscreekNews.paragraphs,
+      ...pzCrosscreekNews.closingParagraphs,
+    ].join(" ");
 
     expect(pzCrosscreekNews.id).toBe("pz-crosscreek");
     expect(pzCrosscreekNews.title).toMatch(/Crosscreek/);
@@ -115,6 +118,11 @@ describe("pzCrosscreekNews", () => {
       "/docs/itd-aeronautics-crosscreek-2026-11-20.pdf",
     ]);
     expect(body).toMatch(/November 20, 2026/);
+    expect(body).toMatch(/staff report is in the City’s official agenda and packet/);
+    expect(pzCrosscreekNews.stand.label).toBe("Where FoNA stands");
+    expect(pzCrosscreekNews.stand.text).toBe(
+      "Friends of Nampa Airport supports growth that works with the airport, and we oppose land development that is not compatible with the Airport Specific Area Plan (ASAP).",
+    );
     expect(pzCrosscreekNews.signupCallout).toEqual(announcementSignupCallout);
     expect(pzCrosscreekNews.postedDate).toBe("2026-11-21");
     expect(pzCrosscreekNews.eventDate).toBe("2026-11-24");

@@ -7,6 +7,7 @@ import {
   formatDocumentDate,
   oeaaaSearch,
   officialDocuments,
+  referenceDocumentGroups,
 } from "./documents";
 
 describe("officialDocuments", () => {
@@ -65,6 +66,7 @@ describe("officialDocuments", () => {
       "itd-aeronautics-braeburn-2026-10-15",
       "aopa-braeburn-2026-10-01",
       "airport-commission-2026-07-13-minutes",
+      "faa-pearland-dd-2026-06-22",
       "airport-commission-2026-05-11-minutes",
       "city-council-workshop-2026-04-16-minutes",
       "nampa-airport-hangar-assessment-2025-07",
@@ -139,7 +141,7 @@ describe("document summaries and grouping", () => {
 
     for (const document of officialDocuments) {
       expect(document.summary.length).toBeGreaterThan(20);
-      expect(["letter", "agenda", "minutes", "report"]).toContain(
+      expect(["letter", "agenda", "minutes", "report", "decision"]).toContain(
         document.kind,
       );
     }
@@ -160,6 +162,41 @@ describe("document summaries and grouping", () => {
       "crosscreek",
       "braeburn-creek",
       "hangar-sales",
+      "other-airports-reference",
+    ]);
+  });
+
+  it("lists the Pearland Director’s Determination in a separate official-link reference group", () => {
+    const decision = officialDocuments.find(
+      (document) => document.id === "faa-pearland-dd-2026-06-22",
+    );
+    expect(decision).toBeDefined();
+    expect(decision?.title).toBe(
+      "FAA Director’s Determination, Docket 16-22-06 (June 22, 2026)",
+    );
+    expect(decision?.date).toBe("2026-06-22");
+    expect(decision?.from).toBe("FAA Office of Airport Compliance");
+    expect(decision?.href).toBe(
+      "https://www.regulations.gov/document/FAA-2022-1704-0011",
+    );
+    expect(decision?.kind).toBe("decision");
+    expect(decision?.summary).toBe(
+      "The FAA found the sponsor of Pearland Regional Airport (Texas) in violation of federal grant assurances, including Grant Assurance 21, after airport land was sold for housing. This case is not about KMAN.",
+    );
+    expect(decision?.relatedWatchItemIds).toEqual([
+      "other-airports-reference",
+    ]);
+    expect(
+      documentsGroupedByProject().map((group) => group.project.id),
+    ).not.toContain("other-airports-reference");
+    const reference = referenceDocumentGroups();
+    expect(reference.map((group) => group.project.id)).toEqual([
+      "other-airports-reference",
+    ]);
+    expect(reference[0]?.project.title).toBe("Other airports / reference");
+    expect(reference[0]?.project.reference).toBe(true);
+    expect(reference[0]?.documents.map((document) => document.id)).toEqual([
+      "faa-pearland-dd-2026-06-22",
     ]);
   });
 

@@ -26,6 +26,21 @@ export function AnnouncementCard({
             </p>
           ))
         : null}
+      {announcement.stand ? (
+        <aside className="rounded-xl border border-line bg-sky-pale px-4 py-4">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-sky">
+            {announcement.stand.label}
+          </p>
+          <p className="mt-2 leading-7 text-navy">{announcement.stand.text}</p>
+        </aside>
+      ) : null}
+      {announcement.closingParagraphs
+        ? announcement.closingParagraphs.map((paragraph) => (
+            <p key={paragraph} className="leading-7 text-muted">
+              {paragraph}
+            </p>
+          ))
+        : null}
       {announcement.text ? (
         <p className="leading-7 text-muted">
           {announcement.text}

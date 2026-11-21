@@ -5,6 +5,8 @@ import {
   formatDocumentDate,
   oeaaaSearch,
   officialDocuments,
+  referenceDocumentGroups,
+  type DocumentProjectGroup,
 } from "@/lib/documents";
 import { siteConfig } from "@/lib/site-config";
 
@@ -15,6 +17,7 @@ export const metadata: Metadata = {
 
 export default function DocumentsPage() {
   const groups = documentsGroupedByProject(officialDocuments);
+  const referenceGroups = referenceDocumentGroups(officialDocuments);
 
   return (
     <main
@@ -71,41 +74,69 @@ export default function DocumentsPage() {
                 {group.project.description}
               </p>
             </div>
-            <ul className="overflow-hidden rounded-2xl border border-line bg-paper shadow-sm">
-              {group.documents.map((document) => (
-                <li
-                  key={document.id}
-                  className="border-b border-line last:border-b-0"
-                >
-                  <a
-                    href={document.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col gap-1 px-5 py-4 hover:bg-sky-pale"
-                  >
-                    <span className="font-semibold text-navy">
-                      {document.title}
-                    </span>
-                    <span className="text-sm leading-6 text-muted">
-                      {formatDocumentDate(document.date)}
-                      <span aria-hidden="true"> · </span>
-                      {document.from}
-                    </span>
-                    <span className="text-sm leading-6 text-muted">
-                      {document.summary}
-                    </span>
-                    <span className="text-sm text-sky">
-                      {document.href.startsWith("https://")
-                        ? "Open official copy →"
-                        : "Open PDF →"}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <DocumentList group={group} />
           </section>
         ))
       )}
+      {referenceGroups.map((group) => (
+        <section
+          key={group.project.id}
+          id={`documents-${group.project.id}`}
+          className="mt-4 flex scroll-mt-28 flex-col gap-4 border-t border-line pt-10"
+        >
+          <div>
+            <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.18em] text-sky">
+              <span
+                className="h-1.5 w-8 shrink-0 rounded-full bg-amber-bright"
+                aria-hidden="true"
+              />
+              Reference
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-navy">
+              {group.project.title}
+            </h2>
+            <p className="mt-2 max-w-3xl leading-7 text-muted">
+              {group.project.description}
+            </p>
+          </div>
+          <DocumentList group={group} />
+        </section>
+      ))}
     </main>
+  );
+}
+
+function DocumentList({ group }: { group: DocumentProjectGroup }) {
+  return (
+    <ul className="overflow-hidden rounded-2xl border border-line bg-paper shadow-sm">
+      {group.documents.map((document) => (
+        <li
+          key={document.id}
+          className="border-b border-line last:border-b-0"
+        >
+          <a
+            href={document.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col gap-1 px-5 py-4 hover:bg-sky-pale"
+          >
+            <span className="font-semibold text-navy">{document.title}</span>
+            <span className="text-sm leading-6 text-muted">
+              {formatDocumentDate(document.date)}
+              <span aria-hidden="true"> · </span>
+              {document.from}
+            </span>
+            <span className="text-sm leading-6 text-muted">
+              {document.summary}
+            </span>
+            <span className="text-sm text-sky">
+              {document.href.startsWith("https://")
+                ? "Open official copy →"
+                : "Open PDF →"}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }

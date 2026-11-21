@@ -57,8 +57,8 @@ const sample: SiteAnnouncement[] = [
 ];
 
 describe("announcement archive rules", () => {
-  it("uses a 60-day default and a homepage cap of 5", () => {
-    expect(ANNOUNCEMENT_ARCHIVE_DAYS).toBe(60);
+  it("uses a 30-day fallback for undated general items and a homepage cap of 5", () => {
+    expect(ANNOUNCEMENT_ARCHIVE_DAYS).toBe(30);
     expect(HOMEPAGE_ANNOUNCEMENT_LIMIT).toBe(5);
   });
 
@@ -73,13 +73,31 @@ describe("announcement archive rules", () => {
     );
   });
 
-  it("archives a general announcement 60 days after it was posted", () => {
+  it("archives an undated general announcement 30 days after it was posted", () => {
     const item = sample[1];
-    expect(announcementArchiveOn(item)).toBe("2027-01-02");
-    expect(isCurrentAnnouncement(item, atDenver("2027-01-01T23:59:00"))).toBe(
+    expect(announcementArchiveOn(item)).toBe("2026-12-03");
+    expect(isCurrentAnnouncement(item, atDenver("2026-12-02T23:59:00"))).toBe(
       true,
     );
-    expect(isCurrentAnnouncement(item, atDenver("2027-01-02T00:00:00"))).toBe(
+    expect(isCurrentAnnouncement(item, atDenver("2026-12-03T00:00:00"))).toBe(
+      false,
+    );
+  });
+
+  it("uses the event date, not the 30-day fallback, for announcements about an event", () => {
+    const item: SiteAnnouncement = {
+      id: "event-note",
+      title: "Hearing note",
+      postedDate: "2026-09-01",
+      eventDate: "2026-11-24",
+      text: "Posted early, about a later hearing.",
+      sources: [{ label: "Source", href: "https://example.com/event-note" }],
+    };
+    expect(announcementArchiveOn(item)).toBe("2026-11-25");
+    expect(isCurrentAnnouncement(item, atDenver("2026-11-21T08:00:00"))).toBe(
+      true,
+    );
+    expect(isCurrentAnnouncement(item, atDenver("2026-11-25T00:00:00"))).toBe(
       false,
     );
   });
@@ -112,7 +130,7 @@ describe("announcement archive rules", () => {
       {
         id: "older-general",
         title: "Older",
-        postedDate: "2026-10-01",
+        postedDate: "2026-11-01",
         text: "Older general.",
         sources: [{ label: "Source", href: "https://example.com/older" }],
       },
@@ -166,15 +184,38 @@ describe("site announcements on November 21, 2026", () => {
       [
         "city-hangar-waitlist",
         "pz-crosscreek",
+        "aaron-bear-thanks",
         "amazon-drone-deliveries",
         "epa-settlement-comment",
-        "new-airport-superintendent",
       ],
     );
     expect(overflowCurrentAnnouncements(siteAnnouncements, now)).toEqual([]);
     expect(archivedAnnouncements(siteAnnouncements, now).map((item) => item.id)).toEqual(
-      ["asap-workshop", "airport-annexation-rezone", "faa-grants"],
+      [
+        "asap-workshop",
+        "new-airport-superintendent",
+        "airport-annexation-rezone",
+        "faa-grants",
+      ],
     );
+  });
+
+  it("thanks Aaron Bear as an undated general item posted Nov. 21, without vacancy details", () => {
+    const thanks = siteAnnouncements.find((item) => item.id === "aaron-bear-thanks");
+    expect(thanks).toBeDefined();
+    expect(thanks?.postedDate).toBe("2026-11-21");
+    expect(thanks?.eventDate).toBeUndefined();
+    expect(announcementArchiveOn(thanks!)).toBe("2026-12-21");
+    expect(thanks?.text).toBe(
+      "Friends of Nampa Airport thanks Aaron Bear for his service on the Nampa Airport Commission. The commission advises the City Council on the operation and maintenance of Nampa Municipal Airport, and we are grateful for his work on behalf of the airport and the community.",
+    );
+    const text = `${thanks?.title} ${thanks?.text}`.toLowerCase();
+    expect(text).toMatch(/nampa airport commission/);
+    expect(text).not.toMatch(/10 years/);
+    expect(text).not.toMatch(/vacancy/);
+    expect(text).not.toMatch(/residen/);
+    expect(text).not.toMatch(/apply/);
+    expect(text).not.toMatch(/deadline/);
   });
 
   it("does not name private individuals in announcement copy", () => {

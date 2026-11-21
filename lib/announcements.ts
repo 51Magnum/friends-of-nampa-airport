@@ -6,8 +6,8 @@ import {
 } from "./site-config";
 import { addCalendarDays, denverDateString } from "./dates";
 
-/** General announcements move to the archive this many days after postedDate. */
-export const ANNOUNCEMENT_ARCHIVE_DAYS = 60;
+/** Undated general announcements move to the archive this many days after postedDate. */
+export const ANNOUNCEMENT_ARCHIVE_DAYS = 30;
 
 /** Maximum current announcements shown on the homepage. */
 export const HOMEPAGE_ANNOUNCEMENT_LIMIT = 5;
@@ -28,12 +28,19 @@ export type SiteAnnouncement = {
   /** Inclusive end date for a multi-day meeting, YYYY-MM-DD. */
   eventEndDate?: string;
   paragraphs?: readonly string[];
+  /** Optional position statement, shown after the main paragraphs. */
+  stand?: {
+    label: string;
+    text: string;
+  };
+  /** Closing copy after a stand statement, such as how to comment. */
+  closingParagraphs?: readonly string[];
   text?: string;
   sources: readonly CitationLink[];
   signupCallout?: SignupCallout;
   /**
    * Inclusive last America/Denver date the item should stay on the homepage.
-   * Overrides the default meeting or 60-day rules.
+   * Overrides the default event-date or 30-day rules.
    */
   expires?: string;
   /** If true, the item stays in the current list (and still counts toward the cap). */
@@ -52,8 +59,22 @@ export const siteAnnouncements: SiteAnnouncement[] = [
     postedDate: "2026-11-21",
     eventDate: "2026-11-24",
     paragraphs: pzCrosscreekNews.paragraphs,
+    stand: pzCrosscreekNews.stand,
+    closingParagraphs: pzCrosscreekNews.closingParagraphs,
     sources: pzCrosscreekNews.sources,
     signupCallout: pzCrosscreekNews.signupCallout,
+  },
+  {
+    id: "aaron-bear-thanks",
+    title: "Thank you, Aaron Bear",
+    postedDate: "2026-11-21",
+    text: "Friends of Nampa Airport thanks Aaron Bear for his service on the Nampa Airport Commission. The commission advises the City Council on the operation and maintenance of Nampa Municipal Airport, and we are grateful for his work on behalf of the airport and the community.",
+    sources: [
+      {
+        label: "Nampa Airport Commission",
+        href: "https://www.cityofnampa.us/97/Airport-Commission",
+      },
+    ],
   },
   {
     id: asapWorkshopNews.id,

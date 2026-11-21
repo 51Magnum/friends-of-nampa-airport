@@ -88,15 +88,6 @@ export const officialLinks: OfficialLink[] = [
   },
 ];
 
-export const gettingStarted = {
-  title: "We’re getting started",
-  paragraphs: [
-    "Friends of Nampa Airport is just getting organized. Our aim is simple: share clear information about the airport, meet a few times a year, and find practical ways to help.",
-    "This group is independent. It is not a City of Nampa board or committee, and it is not an AOPA chapter. We hope to work in a friendly way with airport management, the Airport Commission, and others already active at KMAN.",
-    "Watch this page and join the email list for the first meeting date, and for updates as we get going.",
-  ],
-};
-
 export const announcementSignupCallout = {
   text: "If you found this useful, please help spread the word and encourage others to sign up for Friends of Nampa Airport updates on our website.",
   linkLabel: "Sign up for updates",
@@ -112,12 +103,18 @@ export const pzCrosscreekNews = {
     "The Nampa Planning & Zoning Commission will hold a regular meeting on Tuesday, November 24, 2026, at 6:00 p.m. MST at City Hall, 411 Third Street South, Nampa, in the Council Chambers. The meeting will also be livestreamed on the City’s YouTube channel. Advertised public hearings begin at 6:00 p.m., or as soon after as each matter may be heard.",
     "The airport-relevant public hearing is item 3-3: annexation and zoning to RS-4 (Single-Family Residential), with a development agreement, for Crosscreek at 0 E Victory Road (ANN-00373-2026). The published concept is 169 single-family detached homes on about 52 acres, with a proposed 1,000-foot aviation-compatible buffer from the Nampa Municipal Airport runway. The applicant is Idaho Holdings LLC, representing Nokota Holdings LLC. The Commission’s action is a recommendation to City Council, not a final decision. A preliminary plat is not part of this hearing; the staff report says a future preliminary plat would be required.",
     "The parcel is next to the airport. The FAA Helena Airports District Office’s November 13, 2026 letter, included in the meeting packet, says the property is about 490 feet from the Runway 11/29 pavement edge at its closest point. The letter states that land-use compatibility is not determined solely by noise contours or the runway protection zone, and that an FAA Form 7460-1 “No Hazard” determination addresses structure height only, not noise or land-use compatibility. A noise study submitted with the application reported a 24-hour DNL of 59 dBA and frequent flyovers of 65–70+ dBA Lmax. Because Nampa is a federally obligated airport sponsor, Grant Assurance 21 asks the city to restrict land near the airport to uses compatible with normal airport operations.",
-    "The City’s Airport Division told the Commission the project lies in the AHRA-2 transition/influence buffer of the draft Airport Specific Area Plan and is “recommended not compatible” for medium- or high-density residential under that still-unadopted plan, which prefers commercial or industrial uses. The Airport Commission wrote that it considers the proposal incompatible with the draft ASAP and recommends light-industrial uses within a one-mile radius of the airport. On November 20, 2026, the Idaho Transportation Department Division of Aeronautics wrote that the proposed project is in the airport traffic-pattern area, that low-density development is recommended over high-density development, and that if the project is approved, avigation easements and fair disclosure statements are required to comply with state land-use guidelines. The applicant has proposed development-agreement terms that include no homes within 1,000 feet of the runway, airport-compatible open space in that buffer, recorded noise disclosures, an avigation easement, Part 77 height and notice compliance, lighting and glare limits, and no wildlife-attractant ponds in the open-space area. The staff report presents findings and sample motions for either recommending approval with a development agreement and conditions, or recommending denial. It does not state a single staff recommendation.",
+    "The City’s Airport Division told the Commission the project lies in the AHRA-2 transition/influence buffer of the draft Airport Specific Area Plan and is “recommended not compatible” for medium- or high-density residential under that still-unadopted plan, which prefers commercial or industrial uses. The Airport Commission wrote that it considers the proposal incompatible with the draft ASAP and recommends light-industrial uses within a one-mile radius of the airport. On November 20, 2026, the Idaho Transportation Department Division of Aeronautics wrote that the proposed project is in the airport traffic-pattern area, that low-density development is recommended over high-density development, and that if the project is approved, avigation easements and fair disclosure statements are required to comply with state land-use guidelines. The applicant has proposed development-agreement terms that include no homes within 1,000 feet of the runway, airport-compatible open space in that buffer, recorded noise disclosures, an avigation easement, Part 77 height and notice compliance, lighting and glare limits, and no wildlife-attractant ponds in the open-space area. The staff report presents findings and sample motions for either recommending approval with a development agreement and conditions, or recommending denial. It does not state a single staff recommendation. The staff report is in the City’s official agenda and packet, linked below.",
+  ],
+  stand: {
+    label: "Where FoNA stands",
+    text: "Friends of Nampa Airport supports growth that works with the airport, and we oppose land development that is not compatible with the Airport Specific Area Plan (ASAP).",
+  },
+  closingParagraphs: [
     "You may attend in person or watch the livestream. To speak, sign up with the microphone button on the Public Meetings portal, or sign up at the meeting using a phone or the kiosk at City Hall. Speakers are typically limited to three minutes; the chair may set a different limit. The deadline to have written comments included in the staff report (12:00 noon on Wednesday, November 18) has passed. Comments submitted after that are still forwarded to the Commission and posted for the public record. The portal accepts written comments until 12:00 noon MST on Tuesday, November 24. You may also email pzall@cityofnampa.us or deliver comments to the Planning & Zoning Department at 500 12th Ave South. Please include the case number, ANN-00373-2026. Physical evidence to accompany testimony should be emailed to that address by noon on the meeting day; printed copies may be provided during testimony. Virtual presentations are not allowed.",
   ],
   sources: [
     {
-      label: "City agenda and packet",
+      label: "City agenda, packet, and staff report",
       href: "https://nampa.primegov.com/Portal/Meeting?meetingTemplateId=10512",
     },
     {

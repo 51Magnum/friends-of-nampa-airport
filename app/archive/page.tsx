@@ -38,8 +38,9 @@ export default function ArchivePage() {
           Past announcements and events
         </h1>
         <p className="max-w-3xl leading-7 text-muted">
-          Items move here automatically after their meeting date or, for general
-          updates, 60 days after they were posted. Current announcements are on
+          Items with an event date move here the day after that date. General
+          updates without an event date move here 30 days after they were posted.
+          Current announcements are on
           the{" "}
           <Link
             href="/#announcements"

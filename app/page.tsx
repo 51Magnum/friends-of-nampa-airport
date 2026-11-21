@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import {
-  gettingStarted,
   isUnresolvedPlaceholder,
   meetingAgenda,
   officialLinks,
@@ -106,22 +105,21 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="bg-sky-pale">
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-12 sm:py-16">
-          <p className="max-w-3xl text-lg leading-8 text-muted">
-            {siteConfig.mission}
-          </p>
-          <p className="max-w-3xl text-lg leading-8 text-muted">
-            {siteConfig.welcome}
-          </p>
-        </div>
-      </div>
-
       <main
         id="main"
-        className="mx-auto flex w-full max-w-5xl flex-col gap-16 px-6 py-16 sm:gap-20 sm:py-20"
+        className="mx-auto flex w-full max-w-5xl flex-col gap-16 px-6 py-12 sm:gap-20 sm:py-16"
       >
-        <section id="announcements" className="flex flex-col gap-8 scroll-mt-28">
+        <div className="flex flex-col gap-8 sm:gap-10">
+          <div className="flex flex-col gap-6">
+            <p className="max-w-3xl text-lg leading-8 text-muted">
+              {siteConfig.mission}
+            </p>
+            <p className="max-w-3xl text-lg leading-8 text-muted">
+              {siteConfig.welcome}
+            </p>
+          </div>
+
+          <section id="announcements" className="flex flex-col gap-8 scroll-mt-28">
           <HashRedirect ids={archivedIds} to="/archive" />
           <SectionHeading>Announcements</SectionHeading>
 
@@ -145,16 +143,6 @@ export default function Home() {
             ))
           )}
 
-          <article className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-6 shadow-sm sm:p-8">
-            <h3 className="text-2xl font-semibold tracking-tight text-navy">
-              {gettingStarted.title}
-            </h3>
-            {gettingStarted.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="leading-7 text-muted">
-                {paragraph}
-              </p>
-            ))}
-          </article>
           <p className="text-sm leading-6 text-muted">
             Past announcements and events are in the{" "}
             <Link
@@ -165,7 +153,8 @@ export default function Home() {
             </Link>
             .
           </p>
-        </section>
+          </section>
+        </div>
 
         <section aria-label="Photographs" className="flex flex-col gap-8">
           <PhotoFigure

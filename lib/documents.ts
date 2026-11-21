@@ -9,7 +9,7 @@ export type OfficialDocument = {
   topic: string;
   /** One-sentence neutral summary shown on the documents page. */
   summary: string;
-  kind: "letter" | "agenda" | "minutes" | "report";
+  kind: "letter" | "agenda" | "minutes" | "report" | "decision";
   relatedWatchItemIds: string[];
 };
 
@@ -17,6 +17,11 @@ export type DocumentProject = {
   id: string;
   title: string;
   description: string;
+  /**
+   * If true, this group is shown in a clearly labeled reference section,
+   * separate from Nampa Municipal Airport (KMAN) project groups.
+   */
+  reference?: boolean;
 };
 
 /**
@@ -42,6 +47,13 @@ export const documentProjects: DocumentProject[] = [
     title: "Hangars 0450 and 0540",
     description:
       "City-owned hangars at Nampa Municipal Airport that the Airport Commission and City Council have been discussing.",
+  },
+  {
+    id: "other-airports-reference",
+    title: "Other airports / reference",
+    description:
+      "FAA and other official decisions about airports other than Nampa Municipal Airport (KMAN). These are included as reference only and are not about KMAN.",
+    reference: true,
   },
 ];
 
@@ -191,6 +203,19 @@ export const officialDocuments: OfficialDocument[] = [
     kind: "report",
     relatedWatchItemIds: ["hangar-sales"],
   },
+  {
+    id: "faa-pearland-dd-2026-06-22",
+    title:
+      "FAA Director’s Determination, Docket 16-22-06 (June 22, 2026)",
+    date: "2026-06-22",
+    from: "FAA Office of Airport Compliance",
+    href: "https://www.regulations.gov/document/FAA-2022-1704-0011",
+    topic: "Other airports / reference",
+    summary:
+      "The FAA found the sponsor of Pearland Regional Airport (Texas) in violation of federal grant assurances, including Grant Assurance 21, after airport land was sold for housing. This case is not about KMAN.",
+    kind: "decision",
+    relatedWatchItemIds: ["other-airports-reference"],
+  },
 ];
 
 function byDateNewestFirst(a: OfficialDocument, b: OfficialDocument): number {
@@ -217,10 +242,9 @@ export type DocumentProjectGroup = {
   documents: OfficialDocument[];
 };
 
-/** Projects that have at least one document, newest project activity first. */
-export function documentsGroupedByProject(
-  documents: OfficialDocument[] = officialDocuments,
-  projects: readonly DocumentProject[] = documentProjects,
+function groupedProjects(
+  documents: OfficialDocument[],
+  projects: readonly DocumentProject[],
 ): DocumentProjectGroup[] {
   const groups = projects
     .map((project) => ({
@@ -234,6 +258,28 @@ export function documentsGroupedByProject(
     const bDate = b.documents[0]?.date ?? "";
     return bDate.localeCompare(aDate) || a.project.title.localeCompare(b.project.title);
   });
+}
+
+/** KMAN project groups only, newest project activity first. */
+export function documentsGroupedByProject(
+  documents: OfficialDocument[] = officialDocuments,
+  projects: readonly DocumentProject[] = documentProjects,
+): DocumentProjectGroup[] {
+  return groupedProjects(
+    documents,
+    projects.filter((project) => !project.reference),
+  );
+}
+
+/** Official reference documents about airports other than KMAN. */
+export function referenceDocumentGroups(
+  documents: OfficialDocument[] = officialDocuments,
+  projects: readonly DocumentProject[] = documentProjects,
+): DocumentProjectGroup[] {
+  return groupedProjects(
+    documents,
+    projects.filter((project) => project.reference),
+  );
 }
 
 export function formatDocumentDate(isoDate: string): string {
