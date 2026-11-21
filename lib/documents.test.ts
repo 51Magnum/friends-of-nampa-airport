@@ -65,7 +65,6 @@ describe("officialDocuments", () => {
       "itd-aeronautics-braeburn-2026-10-15",
       "aopa-braeburn-2026-10-01",
       "airport-commission-2026-07-13-minutes",
-      "faa-directors-determination-16-22-06-2026-06-22",
       "airport-commission-2026-05-11-minutes",
       "city-council-workshop-2026-04-16-minutes",
       "nampa-airport-hangar-assessment-2025-07",
@@ -140,7 +139,7 @@ describe("document summaries and grouping", () => {
 
     for (const document of officialDocuments) {
       expect(document.summary.length).toBeGreaterThan(20);
-      expect(["letter", "agenda", "minutes", "report", "decision"]).toContain(
+      expect(["letter", "agenda", "minutes", "report"]).toContain(
         document.kind,
       );
     }
@@ -152,7 +151,6 @@ describe("document summaries and grouping", () => {
       "crosscreek",
       "hangar-sales",
       "braeburn-creek",
-      "related-faa-decisions",
     ]);
     expect(groups[0]?.documents.map((document) => document.id)).toEqual([
       "itd-aeronautics-crosscreek-2026-11-20",
@@ -162,7 +160,6 @@ describe("document summaries and grouping", () => {
       "crosscreek",
       "braeburn-creek",
       "hangar-sales",
-      "related-faa-decisions",
     ]);
   });
 
@@ -171,17 +168,4 @@ describe("document summaries and grouping", () => {
     expect(oeaaaSearch.label).toMatch(/OE\/AAA/);
   });
 
-  it("lists the June 22 FAA Director’s Determination by official link, not a hosted PDF", () => {
-    const decision = officialDocuments.find(
-      (document) =>
-        document.id === "faa-directors-determination-16-22-06-2026-06-22",
-    );
-    expect(decision?.date).toBe("2026-06-22");
-    expect(decision?.kind).toBe("decision");
-    expect(decision?.href).toBe(
-      "https://www.regulations.gov/document/FAA-2022-1704-0011",
-    );
-    expect(decision?.summary).toMatch(/Pearland Regional Airport/);
-    expect(decision?.summary).toMatch(/not a decision about Nampa/);
-  });
 });

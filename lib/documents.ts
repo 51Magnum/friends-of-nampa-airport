@@ -9,7 +9,7 @@ export type OfficialDocument = {
   topic: string;
   /** One-sentence neutral summary shown on the documents page. */
   summary: string;
-  kind: "letter" | "agenda" | "minutes" | "report" | "decision";
+  kind: "letter" | "agenda" | "minutes" | "report";
   relatedWatchItemIds: string[];
 };
 
@@ -42,12 +42,6 @@ export const documentProjects: DocumentProject[] = [
     title: "Hangars 0450 and 0540",
     description:
       "City-owned hangars at Nampa Municipal Airport that the Airport Commission and City Council have been discussing.",
-  },
-  {
-    id: "related-faa-decisions",
-    title: "Related FAA decisions",
-    description:
-      "FAA compliance decisions from other airports that have been cited as context for land-use and grant-assurance questions near KMAN. These are not decisions about Nampa Municipal Airport.",
   },
 ];
 
@@ -102,15 +96,6 @@ export const officialDocuments: OfficialDocument[] = [
     relatedWatchItemIds: ["crosscreek"],
   },
   {
-    id: "itd-aeronautics-crosscreek-2026-11-20",
-    title: "ITD Aeronautics letter (Nov. 20, 2026)",
-    date: "2026-11-20",
-    from: "Idaho Transportation Department Division of Aeronautics",
-    href: "/docs/itd-aeronautics-crosscreek-2026-11-20.pdf",
-    topic: "Crosscreek",
-    relatedWatchItemIds: ["crosscreek"],
-  },
-  {
     id: "iaa-braeburn-2026-11-02",
     title: "IAA letter (Nov. 2, 2026)",
     date: "2026-11-02",
@@ -157,18 +142,6 @@ export const officialDocuments: OfficialDocument[] = [
       "AOPA asked the FAA Helena Airports District Office to review Braeburn Creek for compatibility with KMAN operations and to advise the City of Nampa of its Grant Assurance 21 responsibilities before final city action.",
     kind: "letter",
     relatedWatchItemIds: ["braeburn-creek"],
-  },
-  {
-    id: "faa-directors-determination-16-22-06-2026-06-22",
-    title: "FAA Director’s Determination, Docket No. 16-22-06 (June 22, 2026)",
-    date: "2026-06-22",
-    from: "FAA Office of Airport Compliance and Management Analysis",
-    href: "https://www.regulations.gov/document/FAA-2022-1704-0011",
-    topic: "Related FAA decisions",
-    summary:
-      "In this Part 16 case about Pearland Regional Airport in Texas, the FAA Director found the airport sponsor in violation of Grant Assurances 5, 20, 21, and 29 after airport property was sold for residential development. This is not a decision about Nampa Municipal Airport.",
-    kind: "decision",
-    relatedWatchItemIds: ["related-faa-decisions"],
   },
   {
     id: "airport-commission-2026-07-13-minutes",
