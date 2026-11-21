@@ -1,3 +1,7 @@
+import { denverDateString } from "./dates";
+
+export { TIME_ZONE, denverDateString } from "./dates";
+
 export type UpcomingEvent = {
   id: string;
   title: string;
@@ -18,8 +22,6 @@ export type CalendarLink = {
   label: string;
   href: string;
 };
-
-export const TIME_ZONE = "America/Denver";
 
 /** How many dated items the What’s next section shows at once. */
 export const UPCOMING_EVENT_LIMIT = 4;
@@ -163,15 +165,6 @@ export const officialCalendarLinks: CalendarLink[] = [
   },
 ];
 
-export function denverDateString(now: Date = new Date()): string {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: TIME_ZONE,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(now);
-}
-
 export function isUpcomingEvent(
   event: UpcomingEvent,
   now: Date = new Date(),
@@ -199,6 +192,24 @@ export function visibleUpcomingEvents(
   limit: number = UPCOMING_EVENT_LIMIT,
 ): UpcomingEvent[] {
   return upcomingDatedEvents(events, now).slice(0, limit);
+}
+
+function eventSortDate(event: UpcomingEvent): string {
+  return event.endDate ?? event.date;
+}
+
+/** Past dated items, newest event date first. */
+export function archivedEvents(
+  events: UpcomingEvent[] = upcomingEvents,
+  now: Date = new Date(),
+): UpcomingEvent[] {
+  return events
+    .filter((event) => !isUpcomingEvent(event, now))
+    .sort(
+      (a, b) =>
+        eventSortDate(b).localeCompare(eventSortDate(a)) ||
+        a.id.localeCompare(b.id),
+    );
 }
 
 function utcNoon(isoDate: string): Date {

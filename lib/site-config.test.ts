@@ -4,7 +4,6 @@ import {
   SITE_ORIGIN,
   announcementSignupCallout,
   asapWorkshopNews,
-  homepageAnnouncements,
   isUnresolvedPlaceholder,
   officialLinks,
   pzCrosscreekNews,
@@ -84,6 +83,8 @@ describe("asapWorkshopNews", () => {
     expect(asapWorkshopNews.signupCallout).toEqual(announcementSignupCallout);
     expect(asapWorkshopNews.signupCallout.href).toBe("#signup");
     expect(asapWorkshopNews.signupCallout.linkLabel).toBe("Sign up for updates");
+    expect(asapWorkshopNews.postedDate).toBe("2026-11-17");
+    expect(asapWorkshopNews.eventDate).toBe("2026-11-19");
   });
 });
 
@@ -115,7 +116,7 @@ describe("pzCrosscreekNews", () => {
     ]);
     expect(body).toMatch(/November 20, 2026/);
     expect(pzCrosscreekNews.signupCallout).toEqual(announcementSignupCallout);
-    expect(homepageAnnouncements[0]).toBe(pzCrosscreekNews);
-    expect(homepageAnnouncements[1]).toBe(asapWorkshopNews);
+    expect(pzCrosscreekNews.postedDate).toBe("2026-11-21");
+    expect(pzCrosscreekNews.eventDate).toBe("2026-11-24");
   });
 });

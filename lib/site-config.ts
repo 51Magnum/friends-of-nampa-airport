@@ -106,6 +106,8 @@ export const announcementSignupCallout = {
 export const pzCrosscreekNews = {
   id: "pz-crosscreek",
   title: "Planning & Zoning hearing on Crosscreek, Tuesday, Nov. 24",
+  postedDate: "2026-11-21",
+  eventDate: "2026-11-24",
   paragraphs: [
     "The Nampa Planning & Zoning Commission will hold a regular meeting on Tuesday, November 24, 2026, at 6:00 p.m. MST at City Hall, 411 Third Street South, Nampa, in the Council Chambers. The meeting will also be livestreamed on the City’s YouTube channel. Advertised public hearings begin at 6:00 p.m., or as soon after as each matter may be heard.",
     "The airport-relevant public hearing is item 3-3: annexation and zoning to RS-4 (Single-Family Residential), with a development agreement, for Crosscreek at 0 E Victory Road (ANN-00373-2026). The published concept is 169 single-family detached homes on about 52 acres, with a proposed 1,000-foot aviation-compatible buffer from the Nampa Municipal Airport runway. The applicant is Idaho Holdings LLC, representing Nokota Holdings LLC. The Commission’s action is a recommendation to City Council, not a final decision. A preliminary plat is not part of this hearing; the staff report says a future preliminary plat would be required.",
@@ -149,6 +151,8 @@ export const pzCrosscreekNews = {
 export const asapWorkshopNews = {
   id: "asap-workshop",
   title: "Draft Airport Specific Area Plan workshop, Thursday, Nov. 19",
+  postedDate: "2026-11-17",
+  eventDate: "2026-11-19",
   paragraphs: [
     "The City of Nampa City Council and Planning & Zoning Commission will hold a joint special meeting (workshop) on Thursday, November 19, 2026, at 8:00 a.m. MST at City Hall, 411 Third Street South, Nampa. The meeting will also be livestreamed on the City’s YouTube channel. The only item on the agenda is a discussion of the draft Airport Specific Area Plan (ASAP). This is a workshop: the public may observe, but the agenda does not include a public-comment item.",
     "The ASAP is a draft plan. It proposes a long-range framework for land use, transportation, and airspace protection around Nampa Municipal Airport. The draft boundary covers the airport and surrounding land in the airport’s influence area, including property already in the city and property in the Nampa Impact Area under Canyon County jurisdiction. The packet’s maps and text describe that boundary. Figures given for its size are not consistent in the draft, so please rely on the City’s official maps.",
@@ -169,7 +173,6 @@ export const asapWorkshopNews = {
   signupCallout: announcementSignupCallout,
 } as const;
 
-export const homepageAnnouncements = [pzCrosscreekNews, asapWorkshopNews] as const;
 
 export const kmanUpdateIntro =
   "A short look at recent, publicly documented items (as of November 2026):";

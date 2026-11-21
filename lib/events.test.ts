@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   UPCOMING_EVENT_LIMIT,
+  archivedEvents,
   denverDateString,
   formatEventDate,
   officialCalendarLinks,
@@ -186,5 +187,25 @@ describe("upcoming event data", () => {
       "Warhawk events",
       "EAA 103",
     ]);
+  });
+});
+
+describe("archivedEvents", () => {
+  it("lists past events newest first and leaves upcoming meetings out", () => {
+    const nov21 = archivedEvents(
+      upcomingEvents,
+      atDenver("2026-11-21T08:00:00"),
+    ).map((event) => event.id);
+    expect(nov21).toEqual([
+      "asap-workshop-2026-11-19",
+      "warhawk-veterans-free-week-2026",
+    ]);
+    expect(nov21).not.toContain("pz-2026-11-24");
+
+    const nov25 = archivedEvents(
+      upcomingEvents,
+      atDenver("2026-11-25T00:00:00"),
+    ).map((event) => event.id);
+    expect(nov25[0]).toBe("pz-2026-11-24");
   });
 });

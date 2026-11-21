@@ -7,15 +7,76 @@ export type OfficialDocument = {
   /** Site path under /public, or an external https URL. */
   href: string;
   topic: string;
+  /** One-sentence neutral summary shown on the documents page. */
+  summary: string;
+  kind: "letter" | "agenda" | "minutes" | "report" | "decision";
   relatedWatchItemIds: string[];
+};
+
+export type DocumentProject = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+/**
+ * Projects whose letters and related records appear on the documents page.
+ * Add a new project here, then add documents with the matching
+ * relatedWatchItemIds value.
+ */
+export const documentProjects: DocumentProject[] = [
+  {
+    id: "crosscreek",
+    title: "Crosscreek",
+    description:
+      "Proposed annexation and RS-4 zoning at Victory Road near Nampa Municipal Airport (ANN-00373-2026).",
+  },
+  {
+    id: "braeburn-creek",
+    title: "Braeburn Creek",
+    description:
+      "Proposed annexation and residential development at Amity Avenue and Happy Valley Road (ANN-00371-2026, SPP-00184-2026).",
+  },
+  {
+    id: "hangar-sales",
+    title: "Hangars 0450 and 0540",
+    description:
+      "City-owned hangars at Nampa Municipal Airport that the Airport Commission and City Council have been discussing.",
+  },
+  {
+    id: "related-faa-decisions",
+    title: "Related FAA decisions",
+    description:
+      "FAA compliance decisions from other airports that have been cited as context for land-use and grant-assurance questions near KMAN. These are not decisions about Nampa Municipal Airport.",
+  },
+];
+
+export const oeaaaSearch = {
+  label: "FAA OE/AAA search",
+  href: "https://oeaaa.faa.gov",
+  description:
+    "Search official FAA obstruction evaluation (Form 7460-1) cases and determinations.",
 };
 
 /**
  * Public documents hosted on this site or linked from official sources.
  * Hosted files live in public/docs/. Do not add a document unless the
- * file is public and we have permission to share it.
+ * file is public and we have permission to share it. Add new letters by
+ * placing the PDF in public/docs/ and appending an entry below.
  */
 export const officialDocuments: OfficialDocument[] = [
+  {
+    id: "itd-aeronautics-crosscreek-2026-11-20",
+    title: "ITD Aeronautics letter (Nov. 20, 2026)",
+    date: "2026-11-20",
+    from: "Idaho Transportation Department Division of Aeronautics",
+    href: "/docs/itd-aeronautics-crosscreek-2026-11-20.pdf",
+    topic: "Crosscreek",
+    summary:
+      "The Idaho Transportation Department Division of Aeronautics wrote that the proposed Crosscreek project is in the airport traffic-pattern area, that lower-density development is recommended, and that avigation easements and fair-disclosure statements are needed to meet state land-use guidelines.",
+    kind: "letter",
+    relatedWatchItemIds: ["crosscreek"],
+  },
   {
     id: "airport-commission-2026-11-09-agenda",
     title: "Airport Commission agenda (Nov. 9, 2026)",
@@ -23,6 +84,9 @@ export const officialDocuments: OfficialDocument[] = [
     from: "Nampa Airport Commission",
     href: "/docs/airport-commission-2026-11-09-agenda.pdf",
     topic: "Hangars 0450 and 0540",
+    summary:
+      "Airport Commission agenda including an action item on city hangars 0450 and 0540.",
+    kind: "agenda",
     relatedWatchItemIds: ["hangar-sales"],
   },
   {
@@ -32,6 +96,9 @@ export const officialDocuments: OfficialDocument[] = [
     from: "FAA Helena Airports District Office",
     href: "/docs/faa-helena-crosscreek-2026-11-13.pdf",
     topic: "Crosscreek",
+    summary:
+      "The FAA Helena Airports District Office wrote that it does not issue advance clearances for zoning, reminded the city of Grant Assurance 21, and asked the city to consider land-use compatibility for the proposed Victory Road annexation near the runway.",
+    kind: "letter",
     relatedWatchItemIds: ["crosscreek"],
   },
   {
@@ -50,6 +117,9 @@ export const officialDocuments: OfficialDocument[] = [
     from: "Idaho Aviation Association",
     href: "/docs/iaa-braeburn-2026-11-02.pdf",
     topic: "Braeburn Creek",
+    summary:
+      "The Idaho Aviation Association wrote the city about airport compatibility at Braeburn Creek, encouraged avigation easements and disclosures, and asked the council to consider FAA and ITD comments before deciding.",
+    kind: "letter",
     relatedWatchItemIds: ["braeburn-creek"],
   },
   {
@@ -59,6 +129,9 @@ export const officialDocuments: OfficialDocument[] = [
     from: "FAA Helena Airports District Office",
     href: "/docs/faa-helena-braeburn-2026-10-16.pdf",
     topic: "Braeburn Creek",
+    summary:
+      "The FAA Helena Airports District Office wrote the City of Nampa about Grant Assurance 21 and land-use compatibility for the proposed Braeburn Creek residential development near KMAN, and noted that a Part 77 “No Hazard” determination would address structure height only, not land-use compatibility.",
+    kind: "letter",
     relatedWatchItemIds: ["braeburn-creek"],
   },
   {
@@ -68,6 +141,9 @@ export const officialDocuments: OfficialDocument[] = [
     from: "Idaho Transportation Department Division of Aeronautics",
     href: "/docs/itd-aeronautics-braeburn-2026-10-15.pdf",
     topic: "Braeburn Creek",
+    summary:
+      "The Idaho Transportation Department Division of Aeronautics wrote about land-use compatibility for the proposed Braeburn Creek development under the approach to Runway 29, and recommended lower-density housing, avigation easements, and fair-disclosure statements.",
+    kind: "letter",
     relatedWatchItemIds: ["braeburn-creek"],
   },
   {
@@ -77,7 +153,22 @@ export const officialDocuments: OfficialDocument[] = [
     from: "Aircraft Owners and Pilots Association",
     href: "/docs/aopa-braeburn-2026-10-01.pdf",
     topic: "Braeburn Creek",
+    summary:
+      "AOPA asked the FAA Helena Airports District Office to review Braeburn Creek for compatibility with KMAN operations and to advise the City of Nampa of its Grant Assurance 21 responsibilities before final city action.",
+    kind: "letter",
     relatedWatchItemIds: ["braeburn-creek"],
+  },
+  {
+    id: "faa-directors-determination-16-22-06-2026-06-22",
+    title: "FAA Director’s Determination, Docket No. 16-22-06 (June 22, 2026)",
+    date: "2026-06-22",
+    from: "FAA Office of Airport Compliance and Management Analysis",
+    href: "https://www.regulations.gov/document/FAA-2022-1704-0011",
+    topic: "Related FAA decisions",
+    summary:
+      "In this Part 16 case about Pearland Regional Airport in Texas, the FAA Director found the airport sponsor in violation of Grant Assurances 5, 20, 21, and 29 after airport property was sold for residential development. This is not a decision about Nampa Municipal Airport.",
+    kind: "decision",
+    relatedWatchItemIds: ["related-faa-decisions"],
   },
   {
     id: "airport-commission-2026-07-13-minutes",
@@ -86,6 +177,9 @@ export const officialDocuments: OfficialDocument[] = [
     from: "Nampa Airport Commission",
     href: "/docs/airport-commission-2026-07-13-minutes.pdf",
     topic: "Hangars 0450 and 0540",
+    summary:
+      "Minutes recording that the Commission tabled the item on hangars 0450 and 0540.",
+    kind: "minutes",
     relatedWatchItemIds: ["hangar-sales"],
   },
   {
@@ -95,6 +189,9 @@ export const officialDocuments: OfficialDocument[] = [
     from: "Nampa Airport Commission",
     href: "/docs/airport-commission-2026-05-11-minutes.pdf",
     topic: "Hangars 0450 and 0540",
+    summary:
+      "Minutes reporting that staff said Council wanted to move forward with a sale of hangars 0450 and 0540.",
+    kind: "minutes",
     relatedWatchItemIds: ["hangar-sales"],
   },
   {
@@ -104,6 +201,9 @@ export const officialDocuments: OfficialDocument[] = [
     from: "Nampa City Council",
     href: "/docs/city-council-workshop-2026-04-16-minutes.pdf",
     topic: "Hangars 0450 and 0540",
+    summary:
+      "Workshop minutes stating Council directed staff to get bids to demolish the two hangars in need of the most repair.",
+    kind: "minutes",
     relatedWatchItemIds: ["hangar-sales"],
   },
   {
@@ -113,6 +213,9 @@ export const officialDocuments: OfficialDocument[] = [
     from: "City of Nampa",
     href: "https://www.cityofnampa.us/DocumentCenter/View/19852/Nampa_Airport_Hangar_Assessment_revised_jul_25",
     topic: "Hangars 0450 and 0540",
+    summary:
+      "The city’s hangar assessment (updated July 2025) includes repair estimates for city-owned hangars, including 0450 and 0540.",
+    kind: "report",
     relatedWatchItemIds: ["hangar-sales"],
   },
 ];
@@ -134,6 +237,30 @@ export function documentsForWatchItem(
   return documents
     .filter((document) => document.relatedWatchItemIds.includes(watchItemId))
     .sort(byDateNewestFirst);
+}
+
+export type DocumentProjectGroup = {
+  project: DocumentProject;
+  documents: OfficialDocument[];
+};
+
+/** Projects that have at least one document, newest project activity first. */
+export function documentsGroupedByProject(
+  documents: OfficialDocument[] = officialDocuments,
+  projects: readonly DocumentProject[] = documentProjects,
+): DocumentProjectGroup[] {
+  const groups = projects
+    .map((project) => ({
+      project,
+      documents: documentsForWatchItem(project.id, documents),
+    }))
+    .filter((group) => group.documents.length > 0);
+
+  return groups.sort((a, b) => {
+    const aDate = a.documents[0]?.date ?? "";
+    const bDate = b.documents[0]?.date ?? "";
+    return bDate.localeCompare(aDate) || a.project.title.localeCompare(b.project.title);
+  });
 }
 
 export function formatDocumentDate(isoDate: string): string {

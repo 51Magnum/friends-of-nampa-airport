@@ -1,15 +1,18 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import {
   gettingStarted,
-  homepageAnnouncements,
   isUnresolvedPlaceholder,
-  kmanUpdateIntro,
-  kmanUpdates,
   meetingAgenda,
   officialLinks,
   siteConfig,
   volunteerRoles,
 } from "@/lib/site-config";
+import { currentAnnouncements } from "@/lib/announcements";
+import { archivedAnchorIds } from "@/lib/archive";
+import { AnnouncementCard } from "@/lib/announcement-card";
+import { HashRedirect } from "@/lib/hash-redirect";
+import { PilotResourcesSection } from "@/lib/pilot-resources-section";
 import { UpcomingEventsSection } from "@/lib/upcoming-events";
 import { WatchingSection } from "@/lib/watching-section";
 import Image from "next/image";
@@ -17,30 +20,7 @@ import { MailerLiteSignupForm } from "@/lib/mailerlite-signup-form";
 import { PhotoFigure } from "@/lib/photo-figure";
 import { heroPhoto, kmanPhoto } from "@/lib/photos";
 
-function SourceLinks({
-  sources,
-}: {
-  sources: { label: string; href: string }[];
-}) {
-  return (
-    <>
-      {" "}
-      (
-      {sources.map((source, index) => (
-        <span key={source.href}>
-          {index > 0 ? "; " : null}
-          <a
-            href={source.href}
-            className="font-medium text-sky underline decoration-sky-soft underline-offset-4 hover:text-navy"
-          >
-            {source.label}
-          </a>
-        </span>
-      ))}
-      )
-    </>
-  );
-}
+export const dynamic = "force-dynamic";
 
 function SectionHeading({ children }: { children: ReactNode }) {
   return (
@@ -55,6 +35,9 @@ function SectionHeading({ children }: { children: ReactNode }) {
 }
 
 export default function Home() {
+  const announcements = currentAnnouncements();
+  const archivedIds = archivedAnchorIds();
+
   return (
     <div className="flex flex-1 flex-col bg-sky-pale font-sans">
       <section id="home" className="relative isolate overflow-hidden bg-navy">
@@ -139,37 +122,28 @@ export default function Home() {
         className="mx-auto flex w-full max-w-5xl flex-col gap-16 px-6 py-16 sm:gap-20 sm:py-20"
       >
         <section id="announcements" className="flex flex-col gap-8 scroll-mt-28">
+          <HashRedirect ids={archivedIds} to="/archive" />
           <SectionHeading>Announcements</SectionHeading>
 
-          {homepageAnnouncements.map((announcement) => (
-            <article
-              key={announcement.id}
-              id={announcement.id}
-              className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-6 shadow-sm sm:p-8"
-            >
-              <h3 className="text-2xl font-semibold tracking-tight text-navy">
-                {announcement.title}
-              </h3>
-              {announcement.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="leading-7 text-muted">
-                  {paragraph}
-                </p>
-              ))}
-              <p className="leading-7 text-muted">
-                Official sources:
-                <SourceLinks sources={[...announcement.sources]} />
-              </p>
-              <p className="rounded-xl border border-amber bg-amber-soft px-4 py-4 text-base font-bold leading-7 text-navy">
-                {announcement.signupCallout.text}{" "}
-                <a
-                  href={announcement.signupCallout.href}
-                  className="font-bold text-sky underline decoration-sky-soft underline-offset-4 hover:text-navy"
-                >
-                  {announcement.signupCallout.linkLabel}
-                </a>
-              </p>
-            </article>
-          ))}
+          {announcements.length === 0 ? (
+            <p className="leading-7 text-muted">
+              No current announcements. See the{" "}
+              <Link
+                href="/archive"
+                className="font-medium text-sky underline decoration-sky-soft underline-offset-4 hover:text-navy"
+              >
+                archive
+              </Link>{" "}
+              for earlier items.
+            </p>
+          ) : (
+            announcements.map((announcement) => (
+              <AnnouncementCard
+                key={announcement.id}
+                announcement={announcement}
+              />
+            ))
+          )}
 
           <article className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-6 shadow-sm sm:p-8">
             <h3 className="text-2xl font-semibold tracking-tight text-navy">
@@ -181,24 +155,16 @@ export default function Home() {
               </p>
             ))}
           </article>
-
-          <article className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-6 shadow-sm sm:p-8">
-            <h3 className="text-2xl font-semibold tracking-tight text-navy">
-              What’s happening at KMAN
-            </h3>
-            <p className="leading-7 text-muted">{kmanUpdateIntro}</p>
-            <ul className="flex flex-col gap-4">
-              {kmanUpdates.map((item) => (
-                <li
-                  key={item.text}
-                  className="relative pl-5 leading-7 text-muted before:absolute before:left-0 before:top-2.5 before:h-2 before:w-2 before:rounded-full before:bg-amber-bright"
-                >
-                  {item.text}
-                  <SourceLinks sources={item.sources} />
-                </li>
-              ))}
-            </ul>
-          </article>
+          <p className="text-sm leading-6 text-muted">
+            Past announcements and events are in the{" "}
+            <Link
+              href="/archive"
+              className="font-medium text-sky underline decoration-sky-soft underline-offset-4 hover:text-navy"
+            >
+              archive
+            </Link>
+            .
+          </p>
         </section>
 
         <section aria-label="Photographs" className="flex flex-col gap-8">
@@ -295,6 +261,11 @@ export default function Home() {
               </li>
             ))}
           </ul>
+        </section>
+
+        <section id="pilot-resources" className="flex flex-col gap-6 scroll-mt-28">
+          <SectionHeading>Pilot resources</SectionHeading>
+          <PilotResourcesSection />
         </section>
 
         <section id="get-involved" className="flex flex-col gap-6 scroll-mt-28">

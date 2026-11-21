@@ -80,6 +80,16 @@ export function UpcomingEventsSection() {
       <EventList events={events} />
       <p className="text-sm leading-6 text-muted">{regularScheduleNote}</p>
       <p className="text-sm leading-6 text-muted">
+        Past dated items are in the{" "}
+        <a
+          href="/archive"
+          className="font-medium text-sky underline decoration-sky-soft underline-offset-4 hover:text-navy"
+        >
+          archive
+        </a>
+        .
+      </p>
+      <p className="text-sm leading-6 text-muted">
         {officialCalendarLinks.map((link, index) => (
           <span key={link.href}>
             {index > 0 ? "; " : null}

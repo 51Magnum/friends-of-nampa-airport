@@ -1,8 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
+  documentProjects,
   documentsForWatchItem,
+  documentsGroupedByProject,
   documentsNewestFirst,
   formatDocumentDate,
+  oeaaaSearch,
   officialDocuments,
 } from "./documents";
 
@@ -62,6 +65,7 @@ describe("officialDocuments", () => {
       "itd-aeronautics-braeburn-2026-10-15",
       "aopa-braeburn-2026-10-01",
       "airport-commission-2026-07-13-minutes",
+      "faa-directors-determination-16-22-06-2026-06-22",
       "airport-commission-2026-05-11-minutes",
       "city-council-workshop-2026-04-16-minutes",
       "nampa-airport-hangar-assessment-2025-07",
@@ -107,6 +111,8 @@ describe("officialDocuments", () => {
         from: "Example",
         href: "/docs/older.pdf",
         topic: "Example",
+        summary: "An older example document.",
+        kind: "letter",
         relatedWatchItemIds: ["example"],
       },
       {
@@ -116,10 +122,66 @@ describe("officialDocuments", () => {
         from: "Example",
         href: "/docs/newer.pdf",
         topic: "Example",
+        summary: "A newer example document.",
+        kind: "letter",
         relatedWatchItemIds: ["example"],
       },
     ]);
     expect(sorted.map((document) => document.id)).toEqual(["newer", "older"]);
     expect(formatDocumentDate("2026-11-13")).toBe("Nov. 13, 2026");
+  });
+});
+
+describe("document summaries and grouping", () => {
+  it("gives every document a summary and a kind, without naming private individuals", () => {
+    const text = JSON.stringify(officialDocuments).toLowerCase();
+    expect(text).not.toMatch(/mueller/);
+    expect(text).not.toMatch(/shane/);
+
+    for (const document of officialDocuments) {
+      expect(document.summary.length).toBeGreaterThan(20);
+      expect(["letter", "agenda", "minutes", "report", "decision"]).toContain(
+        document.kind,
+      );
+    }
+  });
+
+  it("groups documents by project, newest activity first, starting with Crosscreek", () => {
+    const groups = documentsGroupedByProject();
+    expect(groups.map((group) => group.project.id)).toEqual([
+      "crosscreek",
+      "hangar-sales",
+      "braeburn-creek",
+      "related-faa-decisions",
+    ]);
+    expect(groups[0]?.documents.map((document) => document.id)).toEqual([
+      "itd-aeronautics-crosscreek-2026-11-20",
+      "faa-helena-crosscreek-2026-11-13",
+    ]);
+    expect(documentProjects.map((project) => project.id)).toEqual([
+      "crosscreek",
+      "braeburn-creek",
+      "hangar-sales",
+      "related-faa-decisions",
+    ]);
+  });
+
+  it("links the FAA OE/AAA search so people can look up 7460-1 cases", () => {
+    expect(oeaaaSearch.href).toBe("https://oeaaa.faa.gov");
+    expect(oeaaaSearch.label).toMatch(/OE\/AAA/);
+  });
+
+  it("lists the June 22 FAA Director’s Determination by official link, not a hosted PDF", () => {
+    const decision = officialDocuments.find(
+      (document) =>
+        document.id === "faa-directors-determination-16-22-06-2026-06-22",
+    );
+    expect(decision?.date).toBe("2026-06-22");
+    expect(decision?.kind).toBe("decision");
+    expect(decision?.href).toBe(
+      "https://www.regulations.gov/document/FAA-2022-1704-0011",
+    );
+    expect(decision?.summary).toMatch(/Pearland Regional Airport/);
+    expect(decision?.summary).toMatch(/not a decision about Nampa/);
   });
 });

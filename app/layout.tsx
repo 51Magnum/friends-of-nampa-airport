@@ -30,14 +30,15 @@ export const metadata: Metadata = {
 };
 
 const nav = [
-  { href: "#announcements", label: "Announcements" },
-  { href: "#whats-next", label: "What’s next" },
-  { href: "#watching", label: "Watching" },
-  { href: "#meetings", label: "Meetings" },
-  { href: "#airport-info", label: "Airport info" },
-  { href: "#get-involved", label: "Get involved" },
-  { href: "#contact", label: "Contact" },
-  { href: "#signup", label: "Email sign-up", emphasize: true },
+  { href: "/#announcements", label: "Announcements" },
+  { href: "/#whats-next", label: "What’s next" },
+  { href: "/#watching", label: "Watching" },
+  { href: "/#meetings", label: "Meetings" },
+  { href: "/resources", label: "Pilot resources" },
+  { href: "/documents", label: "Documents" },
+  { href: "/#get-involved", label: "Get involved" },
+  { href: "/#contact", label: "Contact" },
+  { href: "/#signup", label: "Email sign-up", emphasize: true },
 ] as const;
 
 export default function RootLayout({
@@ -90,6 +91,28 @@ export default function RootLayout({
         <footer className="bg-navy-deep text-sky-soft">
           <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 px-6 py-10 text-sm leading-6">
             <p className="text-sky-soft/95">{siteConfig.footerDisclaimer}</p>
+            <p>
+              <a
+                href="/resources"
+                className="font-medium text-white underline decoration-sky-bright/70 underline-offset-4 hover:decoration-amber-bright"
+              >
+                Pilot resources
+              </a>
+              <span aria-hidden="true"> · </span>
+              <a
+                href="/documents"
+                className="font-medium text-white underline decoration-sky-bright/70 underline-offset-4 hover:decoration-amber-bright"
+              >
+                Documents
+              </a>
+              <span aria-hidden="true"> · </span>
+              <a
+                href="/archive"
+                className="font-medium text-white underline decoration-sky-bright/70 underline-offset-4 hover:decoration-amber-bright"
+              >
+                Archive
+              </a>
+            </p>
             <p>
               Email:{" "}
               <a
